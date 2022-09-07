@@ -1,14 +1,29 @@
 {
   "name": "nextjs-maciejpieczarka-homepage",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "prettier": "prettier --write .",
     "lint": "next lint"
   },
+  "keywords": [
+    "portfolio",
+    "website",
+    "maciej pieczarka",
+    "web development",
+    "nextjs",
+    "chakraui",
+    "fullstack"
+  ],
+  "author": "Maciej Pieczarka",
+  "license": "ISC",
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.9",
+    "@chakra-ui/react": "^2.3.1",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "framer-motion": "^7.2.1",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
