@@ -26,10 +26,11 @@ const styledHeading = styled.h1`
     left: 50%;
     transform: translate(-50%);
     transition: all 300ms ease;
+    border-radius: 1em;
   }
 
   :hover:after {
-    width: 75%;
+    width: 125%;
   }
 `;
 
@@ -51,7 +52,7 @@ const Sectionlayout: NextPage<iSectionLayoutProps> = ({
           <Heading
             as={styledHeading}
             color={useColorModeValue('textDark', 'textLight')}
-            _after={{ bg: useColorModeValue('blueLight', 'blueDark') }}
+            _after={{ bg: useColorModeValue('blueLight.500', 'blueDark.200') }}
           >
             {heading}
           </Heading>

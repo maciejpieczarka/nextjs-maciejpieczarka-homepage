@@ -11,11 +11,12 @@ import {
   MenuButton,
   MenuItem,
   IconButton,
-  useColorModeValue
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
 import ThemeToggleButton from './ThemeToggleBtn';
+import theme from '../lib/theme';
 
 interface ILinkItemProps {
   href: string;
@@ -31,6 +32,7 @@ const LinkItem: React.FC<ILinkItemProps> = ({ href, path, children }) => {
       <Link
         textDecoration={active ? 'underline' : 'none'}
         fontWeight={active ? 'semibold' : 'light'}
+        fontFamily={theme.fonts.heading}
       >
         {children}
       </Link>
