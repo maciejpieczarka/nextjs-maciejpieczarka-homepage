@@ -14,9 +14,35 @@ const config: ThemeConfig = {
   useSystemColorMode: true
 };
 
+const colors = {
+  textDark: '#202023',
+  textLight: '#ffffff',
+  blueLight: '#3D7AED',
+  blueDark: '#6198FF'
+};
+
+const fonts = {
+  body: `'Nunito', 'sans-serif'`
+};
+
+const components = {
+  Divider: {
+    variants: {
+      'section-title': {
+        h: '4px',
+        borderWidth: '30px',
+        width: '30px'
+      }
+    }
+  }
+};
+
 const theme = extendTheme({
   config,
-  styles
+  styles,
+  colors,
+  fonts,
+  components
 });
 
 export default theme;

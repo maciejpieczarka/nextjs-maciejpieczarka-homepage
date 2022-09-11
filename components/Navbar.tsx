@@ -46,7 +46,13 @@ const Navbar: React.FC<INavbarProps> = ({ path }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Box w="100%" as="nav" bg={useColorModeValue('#F4E9DF', '#27272B')}>
+    <Box
+      w="100%"
+      as="nav"
+      bg={useColorModeValue('#F4E9DF', '#27272B')}
+      position="fixed"
+      top="0"
+    >
       <Container maxW="container.xl">
         <Flex justifyContent="space-between" alignItems="center">
           <Logo />
@@ -55,6 +61,7 @@ const Navbar: React.FC<INavbarProps> = ({ path }) => {
             width={{ base: 'full', md: 'auto' }}
             display={{ base: 'none', md: 'flex' }}
             alignItems="center"
+            color={useColorModeValue('textDark', 'textLight')}
           >
             <LinkItem href="/" path={path}>
               Home

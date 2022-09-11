@@ -14,13 +14,13 @@ const MainLayout: NextPage<ILayoutProps> = ({ children, router }) => {
   return (
     <Box>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Maciej Pieczarka&apos;s Portfolio</title>
       </Head>
 
       <Navbar path={router.asPath} />
 
-      <Container maxW="container.xl" bg="green">
+      <Container maxW="container.xl" mt="57px">
         {children}
       </Container>
     </Box>
