@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import NextLink from 'next/link';
 import {
   Box,
@@ -45,8 +44,6 @@ interface INavbarProps {
 }
 
 const Navbar: React.FC<INavbarProps> = ({ path }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <Box
       w="100%"
@@ -54,6 +51,8 @@ const Navbar: React.FC<INavbarProps> = ({ path }) => {
       bg={useColorModeValue('#F4E9DF', '#27272B')}
       position="fixed"
       top="0"
+      style={{ backdropFilter: 'blur(1em)' }}
+      zIndex={2}
     >
       <Container maxW="container.xl">
         <Flex justifyContent="space-between" alignItems="center">
@@ -80,26 +79,32 @@ const Navbar: React.FC<INavbarProps> = ({ path }) => {
             <ThemeToggleButton />
             <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
               <Menu>
-                <MenuButton
-                  onClick={() => setIsOpen(prev => !prev)}
-                  as={IconButton}
-                  aria-label="Menu-button"
-                  colorScheme="gray"
-                  icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon />}
-                />
-                <MenuList>
-                  <NextLink href="/" passHref>
-                    <MenuItem as={Link}>Home</MenuItem>
-                  </NextLink>
+                {({ isOpen }) => (
+                  <>
+                    {' '}
+                    <MenuButton
+                      as={IconButton}
+                      aria-label="Menu-button"
+                      colorScheme="gray"
+                      icon={
+                        isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon />
+                      }
+                    />
+                    <MenuList>
+                      <NextLink href="/" passHref>
+                        <MenuItem as={Link}>Home</MenuItem>
+                      </NextLink>
 
-                  <NextLink href="/skills" passHref>
-                    <MenuItem as={Link}>Skills</MenuItem>
-                  </NextLink>
+                      <NextLink href="/skills" passHref>
+                        <MenuItem as={Link}>Skills</MenuItem>
+                      </NextLink>
 
-                  <NextLink href="/works" passHref>
-                    <MenuItem as={Link}>Works</MenuItem>
-                  </NextLink>
-                </MenuList>
+                      <NextLink href="/works" passHref>
+                        <MenuItem as={Link}>Works</MenuItem>
+                      </NextLink>
+                    </MenuList>
+                  </>
+                )}
               </Menu>
             </Box>
           </Box>

@@ -7,14 +7,16 @@ import {
   useColorModeValue,
   Button,
   Image,
-  IconButton,
+  HStack,
 } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
   AiOutlineGithub,
   AiOutlineInstagram,
   AiFillLinkedin,
 } from 'react-icons/ai';
+
+import { BsArrow90DegDown } from 'react-icons/bs';
 
 import Sectionlayout from '../components/layouts/section';
 import SocialIcon from '../components/SocialIcon';
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
         direction="column"
         justify="center"
         align="center"
-        gap={2}
+        gap={{ base: 10, md: 20 }}
       >
         <Flex
           direction={{ base: 'column-reverse', md: 'row' }}
@@ -75,7 +77,7 @@ const Home: NextPage = () => {
                 color={useColorModeValue('textLight', 'textDark')}
                 variant="solid"
                 size="md"
-                // fontWeight="normal"
+                rightIcon={<ChevronRightIcon />}
               >
                 Check My Work
               </Button>
@@ -84,8 +86,7 @@ const Home: NextPage = () => {
                 borderWidth={2}
                 colorScheme={useColorModeValue('blueLight', 'blueDark')}
                 size="md"
-                // fontWeight="normal"
-                rightIcon={<ChevronRightIcon />}
+                rightIcon={<DownloadIcon />}
               >
                 <Text color={useColorModeValue('textDark', 'textLight')}>
                   Download CV
@@ -95,30 +96,51 @@ const Home: NextPage = () => {
           </Box>
 
           <Image
-            src="/HeroImg.png"
+            borderWidth={{ base: '.3em', md: '1em' }}
+            borderStyle="solid"
+            borderColor="textLight"
+            borderRadius="100%"
+            src="/HeroImg.jpg"
             alt="Profile Picture"
             boxSize={{ base: 100, md: 300, lg: 500 }}
           />
         </Flex>
-        <Box display="flex" gap={2}>
-          <SocialIcon
-            icon={<AiOutlineGithub />}
-            ariaValue="Github Profile"
-            link="https://github.com/maciejpieczarka"
-          />
-          <SocialIcon
-            icon={<AiOutlineInstagram />}
-            ariaValue="Github Profile"
-            link="https://www.instagram.com/pieczareq_/"
-          />
-          <SocialIcon
-            icon={<AiFillLinkedin />}
-            ariaValue="Github Profile"
-            link="https://www.linkedin.com/in/maciej-pieczarka-2311821a4/"
-          />
-        </Box>
+
+        <Flex direction="column" gap={2}>
+          <Flex justify="flex-start" position="relative" left="-8">
+            <Text display="inline-block" lineHeight="2em">
+              Find Me Here
+            </Text>
+            <BsArrow90DegDown
+              size="1.2em"
+              fill={useColorModeValue('#1363d2', '#8AB3FF')}
+              style={{
+                display: 'inline-block',
+                transform: 'scaleX(-1)',
+                alignSelf: 'flex-end',
+              }}
+            />
+          </Flex>
+          <HStack spacing={4}>
+            <SocialIcon
+              icon={<AiOutlineGithub />}
+              ariaValue="Github Profile"
+              link="https://github.com/maciejpieczarka"
+            />
+            <SocialIcon
+              icon={<AiOutlineInstagram />}
+              ariaValue="Github Profile"
+              link="https://www.instagram.com/pieczareq_/"
+            />
+            <SocialIcon
+              icon={<AiFillLinkedin />}
+              ariaValue="Github Profile"
+              link="https://www.linkedin.com/in/maciej-pieczarka-2311821a4/"
+            />
+          </HStack>
+        </Flex>
       </Flex>
-      {/* <Sectionlayout heading="About">d</Sectionlayout> */}
+      <Sectionlayout heading="About">Coming Soon</Sectionlayout>
     </Box>
   );
 };

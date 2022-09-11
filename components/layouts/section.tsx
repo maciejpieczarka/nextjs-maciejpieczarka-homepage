@@ -9,7 +9,7 @@ import {
 import styled from '@emotion/styled';
 
 interface iSectionLayoutProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
   heading: string;
 }
 
