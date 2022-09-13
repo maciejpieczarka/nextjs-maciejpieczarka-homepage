@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import {
   Box,
   Flex,
@@ -6,8 +7,9 @@ import {
   Heading,
   useColorModeValue,
   Button,
-  Image,
   HStack,
+  chakra,
+  Divider,
 } from '@chakra-ui/react';
 import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
@@ -21,6 +23,12 @@ import { BsArrow90DegDown } from 'react-icons/bs';
 import Sectionlayout from '../components/layouts/section';
 import SocialIcon from '../components/SocialIcon';
 
+const CustomImg = chakra(Image, {
+  baseStyle: { maxH: '100%', maxW: '100%' },
+  shouldForwardProp: prop => {
+    return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
+  },
+});
 const Home: NextPage = () => {
   return (
     <Box>
@@ -95,15 +103,21 @@ const Home: NextPage = () => {
             </Flex>
           </Box>
 
-          <Image
+          <Box
+            boxSize={{ base: 100, md: 300, lg: 500 }}
             borderWidth={{ base: '.3em', md: '1em' }}
             borderStyle="solid"
             borderColor="textLight"
-            borderRadius="100%"
-            src="/HeroImg.jpg"
-            alt="Profile Picture"
-            boxSize={{ base: 100, md: 300, lg: 500 }}
-          />
+            borderRadius="full"
+            position="relative"
+          >
+            <CustomImg
+              borderRadius="full"
+              src="/HeroImg.jpg"
+              alt="Profile Picture"
+              layout="fill"
+            />
+          </Box>
         </Flex>
 
         <Flex direction="column" gap={2}>
@@ -140,7 +154,16 @@ const Home: NextPage = () => {
           </HStack>
         </Flex>
       </Flex>
-      <Sectionlayout heading="About">Coming Soon</Sectionlayout>
+      <Sectionlayout heading="About">
+        <Flex align="center">
+          <Flex flex={1} justify="flex-end">
+            <Box position="relative" boxSize={{ md: 400, lg: 500 }}>
+              <CustomImg src="/about-img-light.svg" layout="fill" />
+            </Box>
+          </Flex>
+          <Box flex={1}></Box>
+        </Flex>
+      </Sectionlayout>
     </Box>
   );
 };
