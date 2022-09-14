@@ -10,6 +10,8 @@ import {
   HStack,
   chakra,
   Divider,
+  UnorderedList,
+  ListItem,
 } from '@chakra-ui/react';
 import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
@@ -29,6 +31,7 @@ const CustomImg = chakra(Image, {
     return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
   },
 });
+
 const Home: NextPage = () => {
   return (
     <Box>
@@ -155,13 +158,92 @@ const Home: NextPage = () => {
         </Flex>
       </Flex>
       <Sectionlayout heading="About">
-        <Flex align="center">
-          <Flex flex={1} justify="flex-end">
+        <Flex align="center" gap={4}>
+          <Flex
+            display={{ base: 'none', md: 'flex' }}
+            flex={1}
+            justify="flex-end"
+          >
             <Box position="relative" boxSize={{ md: 400, lg: 500 }}>
-              <CustomImg src="/about-img-light.svg" layout="fill" />
+              <CustomImg
+                src={`/about-img${useColorModeValue('-light', '-dark')}.svg`}
+                layout="fill"
+              />
             </Box>
           </Flex>
-          <Box flex={1}></Box>
+          <Flex
+            width="50%"
+            direction="column"
+            align={{ base: 'center', md: 'flex-start' }}
+            flex={1}
+          >
+            <Text
+              fontSize={{ base: 14, md: 15, lg: 18 }}
+              align={{ base: 'center', md: 'justify' }}
+            >
+              Hi, I&apos;m{' '}
+              <Text as="span" variant="highlight">
+                Maciej Pieczarka
+              </Text>
+              , a self-taught{' '}
+              <Text as="span" variant="highlight">
+                full-stack developer
+              </Text>{' '}
+              from Poland. Currently a student in the Technical High School of
+              IT and Electronic on a{' '}
+              <Text as="span" variant="highlight">
+                Programmer Technician
+              </Text>{' '}
+              profile. Since the beginning of my journey with Web Dev{' '}
+              <Text as="span" variant="highlight">
+                5 years ago
+              </Text>
+              , I fell in love with learning new stuff, trying to{' '}
+              <Text as="span" variant="highlight">
+                always stay up-to-date
+              </Text>{' '}
+              with the currently dominating technologies.
+            </Text>
+            <Divider
+              variant="solid"
+              borderColor={useColorModeValue('textDark', 'textLight')}
+              my={3}
+            />
+            <Text align={{ base: 'center', md: 'left' }}>
+              A Few technologies I&apos;ve been working with recently:
+            </Text>
+
+            <HStack spacing={5} my={3}>
+              <Box>
+                <ChevronRightIcon
+                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
+                />
+                TypeScript
+              </Box>
+              <Box>
+                <ChevronRightIcon
+                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
+                />
+                NodeJS
+              </Box>
+              <Box>
+                <ChevronRightIcon
+                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
+                />
+                ChakraUI
+              </Box>
+            </HStack>
+            <Button
+              mt={5}
+              colorScheme={useColorModeValue('blueLight', 'blueDark')}
+              color={useColorModeValue('textLight', 'textDark')}
+              variant="solid"
+              size="md"
+              rightIcon={<ChevronRightIcon />}
+            >
+              My Skills
+            </Button>
+          </Flex>
         </Flex>
       </Sectionlayout>
     </Box>

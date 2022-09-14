@@ -49,10 +49,12 @@ const fonts = {
 };
 
 const components = {
-  Button: {
+  Text: {
     variants: {
-      borderBtn: {},
-      fillBtn: {},
+      highlight: (props: StyleFunctionProps) => ({
+        fontWeight: 'bold',
+        color: props.colorMode === 'dark' ? 'blueDark.200' : 'blueLight.500',
+      }),
     },
   },
 };
