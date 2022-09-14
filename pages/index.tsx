@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import NextLink from 'next/link';
 import Image from 'next/image';
 import {
   Box,
@@ -10,8 +11,6 @@ import {
   HStack,
   chakra,
   Divider,
-  UnorderedList,
-  ListItem,
 } from '@chakra-ui/react';
 import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
@@ -83,15 +82,17 @@ const Home: NextPage = () => {
               m={{ base: 'auto', md: '0' }}
               maxW="max-content"
             >
-              <Button
-                colorScheme={useColorModeValue('blueLight', 'blueDark')}
-                color={useColorModeValue('textLight', 'textDark')}
-                variant="solid"
-                size="md"
-                rightIcon={<ChevronRightIcon />}
-              >
-                Check My Work
-              </Button>
+              <NextLink href="/works" passHref>
+                <Button
+                  colorScheme={useColorModeValue('blueLight', 'blueDark')}
+                  color={useColorModeValue('textLight', 'textDark')}
+                  variant="solid"
+                  size="md"
+                  rightIcon={<ChevronRightIcon />}
+                >
+                  Check My Work
+                </Button>
+              </NextLink>
               <Button
                 variant="outline"
                 borderWidth={2}
@@ -157,7 +158,7 @@ const Home: NextPage = () => {
           </HStack>
         </Flex>
       </Flex>
-      <Sectionlayout heading="About">
+      <Sectionlayout heading="about">
         <Flex align="center" gap={4}>
           <Flex
             display={{ base: 'none', md: 'flex' }}
@@ -233,16 +234,18 @@ const Home: NextPage = () => {
                 ChakraUI
               </Box>
             </HStack>
-            <Button
-              mt={5}
-              colorScheme={useColorModeValue('blueLight', 'blueDark')}
-              color={useColorModeValue('textLight', 'textDark')}
-              variant="solid"
-              size="md"
-              rightIcon={<ChevronRightIcon />}
-            >
-              My Skills
-            </Button>
+            <NextLink href="/skills" passHref>
+              <Button
+                mt={5}
+                colorScheme={useColorModeValue('blueLight', 'blueDark')}
+                color={useColorModeValue('textLight', 'textDark')}
+                variant="solid"
+                size="md"
+                rightIcon={<ChevronRightIcon />}
+              >
+                My Skills
+              </Button>
+            </NextLink>
           </Flex>
         </Flex>
       </Sectionlayout>

@@ -1,7 +1,7 @@
 import Sectionlayout from '../components/layouts/section';
 
 const WorksPage = () => {
-  return <Sectionlayout heading="Works">Coming Soon</Sectionlayout>;
+  return <Sectionlayout heading="works">Coming Soon</Sectionlayout>;
 };
 
 export default WorksPage;

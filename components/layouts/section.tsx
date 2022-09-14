@@ -48,13 +48,13 @@ const Sectionlayout: NextPage<iSectionLayoutProps> = ({
       gap={10}
     >
       <LinkBox>
-        <LinkOverlay href={heading === 'About' ? '/#about' : `/${heading}`}>
+        <LinkOverlay href={heading === 'about' ? '/#about' : `/${heading}`}>
           <Heading
             as={styledHeading}
             color={useColorModeValue('textDark', 'textLight')}
             _after={{ bg: useColorModeValue('blueLight.500', 'blueDark.200') }}
           >
-            {heading}
+            {heading.charAt(0).toUpperCase() + heading.slice(1)}
           </Heading>
         </LinkOverlay>
       </LinkBox>
