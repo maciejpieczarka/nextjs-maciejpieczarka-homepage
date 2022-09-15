@@ -108,7 +108,7 @@ const Home: NextPage = () => {
           </Box>
 
           <Box
-            boxSize={{ base: 100, md: 300, lg: 500 }}
+            boxSize={{ base: 100, md: 300, lg: 450 }}
             borderWidth={{ base: '.3em', md: '1em' }}
             borderStyle="solid"
             borderColor="textLight"
@@ -159,7 +159,7 @@ const Home: NextPage = () => {
         </Flex>
       </Flex>
       <Sectionlayout heading="about">
-        <Flex align="center" gap={4}>
+        <Flex align="center" gap={4} py="10">
           <Flex
             display={{ base: 'none', md: 'flex' }}
             flex={1}
