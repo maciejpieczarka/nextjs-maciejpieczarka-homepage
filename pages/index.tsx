@@ -24,7 +24,7 @@ import { BsArrow90DegDown } from 'react-icons/bs';
 import Sectionlayout from '../components/layouts/section';
 import SocialIcon from '../components/SocialIcon';
 
-const CustomImg = chakra(Image, {
+export const CustomImg = chakra(Image, {
   baseStyle: { maxH: '100%', maxW: '100%' },
   shouldForwardProp: prop => {
     return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
