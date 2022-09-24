@@ -1,0 +1,22 @@
+{
+  "frontend": [
+    {
+      "skillName": "Next.js",
+      "skillDesc": "React.js framework lorem ipsum"
+    },
+    {
+      "skillName": "Next.js",
+      "skillDesc": "React.js framework lorem ipsum"
+    },
+    {
+      "skillName": "Next.js",
+      "skillDesc": "React.js framework lorem ipsum"
+    },
+    {
+      "skillName": "Next.js",
+      "skillDesc": "React.js framework lorem ipsum"
+    }
+  ],
+  "backend": [],
+  "tools": []
+}

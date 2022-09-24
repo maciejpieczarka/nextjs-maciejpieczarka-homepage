@@ -1,5 +1,13 @@
 import { motion } from 'framer-motion';
-import { Box, Flex, Heading, useColorModeValue } from '@chakra-ui/react';
+import {
+  Flex,
+  Heading,
+  ListItem,
+  UnorderedList,
+  Text,
+  useColorModeValue,
+  Button,
+} from '@chakra-ui/react';
 import { useState } from 'react';
 import { CustomImg } from '../pages/index';
 
@@ -13,20 +21,25 @@ const CardFace: React.FC<ICardFaceProps> = ({ icon, title }) => {
     <Flex direction="column" justify="center" align="center" gap={3}>
       <CustomImg
         src={`/${icon}${useColorModeValue('-light', '-dark')}.svg`}
-        width={100}
-        height={100}
+        width={170}
+        height={170}
         alt={`${title} card image`}
       />
-      <Heading as={motion.h3}>{title}</Heading>
+      <Heading as={motion.h3} fontSize="2.7em">
+        {title}
+      </Heading>
     </Flex>
   );
 };
 
 interface ISkillCardProps extends ICardFaceProps {
-  children: React.ReactNode;
+  listContent: {
+    skillName: string;
+    skillDesc: string;
+  }[];
 }
 
-const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, children }) => {
+const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -38,12 +51,30 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, children }) => {
         onClick={() => setIsOpen(true)}
         shadow="lg"
         direction={{ base: 'column', md: 'row' }}
-        py={10}
-        px={5}
+        p="3em"
         borderRadius="2em"
+        gap={5}
       >
         <CardFace icon={icon} title={title} />
-        {isOpen && <motion.div>asd</motion.div>}
+        {isOpen && (
+          <Flex bg="red" align="flex-start">
+            <UnorderedList as={motion.ul} spacing={3}>
+              {listContent.map(({ skillName, skillDesc }, i) => {
+                return (
+                  <ListItem as={motion.li} key={i}>
+                    <Text as="span" fontWeight="bold">
+                      {skillName}
+                    </Text>
+                    <Text as="span">- {skillDesc}</Text>
+                  </ListItem>
+                );
+              })}
+            </UnorderedList>
+            <Button position="relative" top="-10" right="-5" cursor="pointer">
+              X
+            </Button>
+          </Flex>
+        )}
       </Flex>
     </>
   );
