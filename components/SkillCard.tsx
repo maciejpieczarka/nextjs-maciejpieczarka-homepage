@@ -1,9 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import {
   Flex,
-  ListItem,
-  UnorderedList,
   Text,
   useColorModeValue,
   Box,
