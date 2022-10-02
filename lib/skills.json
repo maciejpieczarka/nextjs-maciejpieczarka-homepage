@@ -1,22 +1,56 @@
 {
   "frontend": [
     {
-      "skillName": "Next.js",
-      "skillDesc": "React.js framework lorem ipsum"
+      "skillName": "Html",
+      "skillDesc": "Semantics, SEO, Accessibility"
     },
     {
-      "skillName": "Next.js",
-      "skillDesc": "React.js framework lorem ipsum"
+      "skillName": "Css",
+      "skillDesc": "SCSS, Chakra UI, Tailwind"
     },
     {
-      "skillName": "Next.js",
-      "skillDesc": "React.js framework lorem ipsum"
+      "skillName": "JavaScript",
+      "skillDesc": "ES6+, TypeScript"
     },
     {
-      "skillName": "Next.js",
-      "skillDesc": "React.js framework lorem ipsum"
+      "skillName": "React",
+      "skillDesc": "Next.js, Advanced Topics"
+    },
+    {
+      "skillName": "Jest",
+      "skillDesc": "Testing"
     }
   ],
-  "backend": [],
-  "tools": []
+  "backend": [
+    {
+      "skillName": "Languages",
+      "skillDesc": "Node.js, Php"
+    },
+    {
+      "skillName": "Databases",
+      "skillDesc": "MongoDB, PostgreSQL, MySql"
+    },
+    {
+      "skillName": "REST API",
+      "skillDesc": "Express.js"
+    }
+  ],
+  "tools": [
+    {
+      "skillName": "Design",
+      "skillDesc": "Figma, Photoshop"
+    },
+    {
+      "skillName": "Version Control",
+      "skillDesc": "Git, GitHub"
+    },
+    {
+      "skillName": "Build Tools",
+      "skillDesc": "Webpack, Parcel, NPM, Eslint, Prettier"
+    },
+    {
+      "skillName": "Others",
+      "skillDesc": "VS Code"
+    }
+  ]
 }

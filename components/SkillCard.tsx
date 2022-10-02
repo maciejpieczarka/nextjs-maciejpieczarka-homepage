@@ -50,7 +50,7 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
             height="100vh"
             width="100vw"
             bg={modalBg}
-            opacity={0.3}
+            opacity={0.5}
             zIndex={2}
           />
           <Flex
@@ -81,7 +81,7 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
                 {listContent.map(({ skillName, skillDesc }) => (
                   <ListItem key={skillName} as={motion.li}>
                     <Text as="span" fontWeight="bold">
-                      ddd
+                      {skillName}
                     </Text>
                     &nbsp;-&nbsp;{skillDesc}
                   </ListItem>

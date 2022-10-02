@@ -57,7 +57,7 @@ const Sectionlayout: NextPage<iSectionLayoutProps> = ({
         direction="column"
         align="center"
         width="100%"
-        h="calc(100vh - 57px)"
+        minHeight="calc(100vh - 57px)"
         py={20}
         gap={10}
       >

@@ -8,7 +8,7 @@ const SkillsPage = () => {
   return (
     <Sectionlayout heading="skills" webTitle="Skills">
       <LayoutGroup>
-        <Flex gap={10}>
+        <Flex gap={10} direction={{ base: 'column', md: 'row' }}>
           <SkillCard
             title="Frontend"
             icon="frontend-icon"
