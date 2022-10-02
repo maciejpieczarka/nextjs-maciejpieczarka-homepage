@@ -1,33 +1,36 @@
-import { LayoutGroup } from 'framer-motion';
-import { Flex } from '@chakra-ui/react';
+import { Flex, type FlexProps } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import Sectionlayout from '../components/layouts/section';
 import SkillCard from '../components/SkillCard';
 import skills from '../lib/skills.json';
 
+const MotionBox = motion<Omit<FlexProps, 'transition'>>(Flex);
+
 const SkillsPage = () => {
   return (
     <Sectionlayout heading="skills" webTitle="Skills">
-      <LayoutGroup>
-        <Flex gap={10} direction={{ base: 'column', md: 'row' }}>
-          <SkillCard
-            title="Frontend"
-            icon="frontend-icon"
-            listContent={skills.frontend}
-          />
+      <MotionBox
+        as={motion.div}
+        gap={10}
+        direction={{ base: 'column', md: 'row' }}
+        initial="hide"
+        whileInView="show"
+        transition={{ staggerChildren: 0.2 }}
+      >
+        <SkillCard
+          title="Frontend"
+          icon="frontend-icon"
+          listContent={skills.frontend}
+        />
 
-          <SkillCard
-            title="Backend"
-            icon="backend-icon"
-            listContent={skills.backend}
-          />
+        <SkillCard
+          title="Backend"
+          icon="backend-icon"
+          listContent={skills.backend}
+        />
 
-          <SkillCard
-            title="Tools"
-            icon="tools-icon"
-            listContent={skills.tools}
-          />
-        </Flex>
-      </LayoutGroup>
+        <SkillCard title="Tools" icon="tools-icon" listContent={skills.tools} />
+      </MotionBox>
     </Sectionlayout>
   );
 };

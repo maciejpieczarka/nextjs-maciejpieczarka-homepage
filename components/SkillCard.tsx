@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import {
   Flex,
@@ -20,6 +20,30 @@ interface ISkillCardProps extends ICardFaceProps {
   }[];
 }
 
+const rise = {
+  hide: {
+    y: 30,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { type: 'tween', duration: 0.5 },
+  },
+};
+
+const slide = {
+  hide: {
+    x: 30,
+    opacity: 0,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+    transition: { type: 'tween', duration: 0.5 },
+  },
+};
+
 const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const modalBg = useColorModeValue('textDark', 'textLight');
@@ -31,12 +55,14 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
       <Box
         padding={12}
         borderRadius={20}
-        shadow="xl"
+        shadow="lg"
         bg={cardBg}
         as={motion.div}
+        variants={rise}
         layoutId={title}
         onClick={() => setSelectedCard(title)}
         cursor="pointer"
+        _hover={{ shadow: 'xl' }}
       >
         <CardFace title={title} icon={icon} />
       </Box>
@@ -77,16 +103,20 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
               bg={cardBg}
             >
               <CardFace title={title} icon={icon} />
-              <UnorderedList as={motion.ul}>
+              <motion.ul
+                initial="hide"
+                whileInView="show"
+                transition={{ delayChildren: 0.1, staggerChildren: 0.1 }}
+              >
                 {listContent.map(({ skillName, skillDesc }) => (
-                  <ListItem key={skillName} as={motion.li}>
+                  <motion.li key={skillName} variants={slide}>
                     <Text as="span" fontWeight="bold">
                       {skillName}
                     </Text>
                     &nbsp;-&nbsp;{skillDesc}
-                  </ListItem>
+                  </motion.li>
                 ))}
-              </UnorderedList>
+              </motion.ul>
               <Box position="absolute" top={6} right={6}>
                 <IconButton
                   variant="unstyled"
