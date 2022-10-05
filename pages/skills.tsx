@@ -16,6 +16,7 @@ const SkillsPage = () => {
         initial="hide"
         whileInView="show"
         transition={{ staggerChildren: 0.2 }}
+        mt={10}
       >
         <SkillCard
           title="Frontend"
