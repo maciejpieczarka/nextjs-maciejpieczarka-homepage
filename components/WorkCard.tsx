@@ -1,11 +1,10 @@
-import NextLink from 'next/link';
 import {
   Box,
   GridItem,
   Text,
   Heading,
-  Flex,
   useColorModeValue,
+  Flex,
 } from '@chakra-ui/react';
 import { CustomImg } from '../pages/index';
 import styled from '@emotion/styled';
@@ -23,21 +22,6 @@ const WorkLink = styled(Text)`
   text-decoration: underline;
   font-size: 1.4em;
 `;
-const WorkBox = styled(Box)`
-  :after {
-    content: '';
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-`;
 
 const WorkCard: React.FC<IWorkCardProps> = ({
   img,
@@ -49,26 +33,41 @@ const WorkCard: React.FC<IWorkCardProps> = ({
   return (
     <GridItem textAlign="center" width="100%" height="100%" position="relative">
       <Box
-        as={WorkBox}
         width={340}
         height={190}
         position="relative"
         borderRadius={20}
         overflow="hidden"
         mx="auto"
+        shadow="md"
       >
         <CustomImg src={img} layout="fill" />
         <Flex
+          position="absolute"
+          top="0"
+          left="0"
+          bottom="0"
+          right="0"
+          direction="column"
+          align="center"
+          justify="center"
+          gap={10}
+          opacity={0}
+          transition="opacity 300ms ease"
+          cursor="pointer"
           bg={useColorModeValue('textDark', 'textLight')}
-          //   display="none"
-          _hover={{ display: 'none' }}
+          _hover={{ opacity: 0.9 }}
         >
-          <NextLink href={url}>
-            <WorkLink>Live Preview</WorkLink>
-          </NextLink>
-          <NextLink href={codeUrl}>
-            <WorkLink>Code</WorkLink>
-          </NextLink>
+          <a href={url} target="_blank" rel="noreferrer">
+            <WorkLink color={useColorModeValue('textLight', 'textDark')}>
+              Live Preview
+            </WorkLink>
+          </a>
+          <a href={codeUrl} target="_blank" rel="noreferrer">
+            <WorkLink color={useColorModeValue('textLight', 'textDark')}>
+              Code
+            </WorkLink>
+          </a>
         </Flex>
       </Box>
 
