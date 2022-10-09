@@ -13,8 +13,8 @@ const SkillsPage = () => {
         as={motion.div}
         gap={10}
         direction={{ base: 'column', md: 'row' }}
-        initial="hide"
-        whileInView="show"
+        initial="start"
+        whileInView="end"
         transition={{ staggerChildren: 0.2 }}
         mt={10}
       >

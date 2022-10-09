@@ -1,4 +1,6 @@
 import { IconButton, Link, useColorModeValue } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { scale } from '../lib/animationVariants';
 
 interface ISocialIconProps {
   icon: JSX.Element;
@@ -10,6 +12,10 @@ const SocialIcon = ({ icon, ariaValue, link }: ISocialIconProps) => {
   return (
     <Link href={link} target="_blank" rel="noopener">
       <IconButton
+        as={motion.button}
+        variants={scale}
+        initial="start"
+        whileInView="end"
         icon={icon}
         aria-label={ariaValue}
         variant="ghost"

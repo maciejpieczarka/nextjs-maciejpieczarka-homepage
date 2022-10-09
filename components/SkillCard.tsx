@@ -10,6 +10,7 @@ import {
 import { useState } from 'react';
 import CardFace from './CardFace';
 import type { ICardFaceProps } from './CardFace';
+import { slideRight, rise } from '../lib/animationVariants';
 
 interface ISkillCardProps extends ICardFaceProps {
   listContent: {
@@ -17,30 +18,6 @@ interface ISkillCardProps extends ICardFaceProps {
     skillDesc: string;
   }[];
 }
-
-const rise = {
-  hide: {
-    y: 30,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { type: 'tween', duration: 0.5 },
-  },
-};
-
-const slide = {
-  hide: {
-    x: 30,
-    opacity: 0,
-  },
-  show: {
-    x: 0,
-    opacity: 1,
-    transition: { type: 'tween', duration: 0.5 },
-  },
-};
 
 const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
@@ -102,12 +79,12 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
             >
               <CardFace title={title} icon={icon} />
               <motion.ul
-                initial="hide"
-                whileInView="show"
+                initial="start"
+                whileInView="end"
                 transition={{ delayChildren: 0.1, staggerChildren: 0.1 }}
               >
                 {listContent.map(({ skillName, skillDesc }) => (
-                  <motion.li key={skillName} variants={slide}>
+                  <motion.li key={skillName} variants={slideRight}>
                     <Text as="span" fontWeight="bold">
                       {skillName}
                     </Text>

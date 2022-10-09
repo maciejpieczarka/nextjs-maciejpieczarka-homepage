@@ -54,7 +54,6 @@ const WorkCard: React.FC<IWorkCardProps> = ({
           gap={10}
           opacity={0}
           transition="opacity 300ms ease"
-          cursor="pointer"
           bg={useColorModeValue('textDark', 'textLight')}
           _hover={{ opacity: 0.9 }}
         >
