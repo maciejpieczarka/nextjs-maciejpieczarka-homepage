@@ -11,14 +11,23 @@ import {
   HStack,
   chakra,
   Divider,
+  type StackProps,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import {
+  slideLeft,
+  slideRight,
+  rise,
+  riseDelay,
+  visibility,
+  scale,
+} from '../lib/animationVariants';
 import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
   AiOutlineGithub,
   AiOutlineInstagram,
   AiFillLinkedin,
 } from 'react-icons/ai';
-
 import { BsArrow90DegDown } from 'react-icons/bs';
 
 import Sectionlayout from '../components/layouts/section';
@@ -30,6 +39,8 @@ export const CustomImg = chakra(Image, {
     return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
   },
 });
+
+const MotionHStack = motion<Omit<StackProps, 'transition'>>(HStack);
 
 const Home: NextPage = () => {
   return (
@@ -51,20 +62,30 @@ const Home: NextPage = () => {
           <Box textAlign={{ base: 'center', md: 'left' }}>
             <Box mb={5}>
               <Heading
-                as="h3"
+                as={motion.h3}
+                variants={slideLeft}
+                initial="start"
+                whileInView="end"
                 size={{ base: 'md', md: 'lg' }}
                 fontWeight="bold"
               >
                 Hello!
               </Heading>
               <Heading
-                as="h1"
+                as={motion.h1}
+                variants={slideRight}
+                initial="start"
+                whileInView="end"
                 size={{ base: 'xl', lg: '2xl' }}
                 fontWeight="bold"
               >
                 I am Maciej Pieczarka
               </Heading>
               <Text
+                as={motion.p}
+                variants={visibility}
+                initial="start"
+                whileInView="end"
                 bg={useColorModeValue('blueLight.500', 'blueDark.200')}
                 color={useColorModeValue('textLight', 'textDark')}
                 fontSize={{ base: 'md', md: 'lg' }}
@@ -74,7 +95,15 @@ const Home: NextPage = () => {
               >
                 Junior Web Developer &amp; Designer{' '}
               </Text>
-              <Text fontWeight="light">From Poland</Text>
+              <Text
+                fontWeight="light"
+                as={motion.p}
+                variants={visibility}
+                initial="start"
+                whileInView="end"
+              >
+                From Poland
+              </Text>
             </Box>
             <Flex
               direction={{ base: 'column', md: 'row' }}
@@ -84,6 +113,10 @@ const Home: NextPage = () => {
             >
               <NextLink href="/works" passHref>
                 <Button
+                  as={motion.button}
+                  variants={rise}
+                  initial="start"
+                  whileInView="end"
                   colorScheme={useColorModeValue('blueLight', 'blueDark')}
                   color={useColorModeValue('textLight', 'textDark')}
                   variant="solid"
@@ -94,6 +127,10 @@ const Home: NextPage = () => {
                 </Button>
               </NextLink>
               <Button
+                as={motion.button}
+                variants={riseDelay}
+                initial="start"
+                whileInView="end"
                 variant="outline"
                 borderWidth={2}
                 colorScheme={useColorModeValue('blueLight', 'blueDark')}
@@ -108,6 +145,10 @@ const Home: NextPage = () => {
           </Box>
 
           <Box
+            as={motion.div}
+            variants={rise}
+            initial="start"
+            whileInView="end"
             boxSize={{ base: 100, md: 300, lg: 450 }}
             borderWidth={{ base: '.3em', md: '1em' }}
             borderStyle="solid"
@@ -125,7 +166,15 @@ const Home: NextPage = () => {
         </Flex>
 
         <Flex direction="column" gap={2}>
-          <Flex justify="flex-start" position="relative" left="-8">
+          <Flex
+            as={motion.div}
+            variants={visibility}
+            initial="start"
+            whileInView="end"
+            justify="flex-start"
+            position="relative"
+            left="-8"
+          >
             <Text display="inline-block" lineHeight="2em">
               Find Me Here
             </Text>
@@ -165,7 +214,14 @@ const Home: NextPage = () => {
             flex={1}
             justify="flex-end"
           >
-            <Box position="relative" boxSize={{ md: 400, lg: 500 }}>
+            <Box
+              as={motion.div}
+              variants={scale}
+              initial="start"
+              whileInView="end"
+              position="relative"
+              boxSize={{ md: 400, lg: 500 }}
+            >
               <CustomImg
                 src={`/about-img${useColorModeValue('-light', '-dark')}.svg`}
                 layout="fill"
@@ -179,6 +235,10 @@ const Home: NextPage = () => {
             flex={1}
           >
             <Text
+              as={motion.p}
+              variants={slideRight}
+              initial="start"
+              whileInView="end"
               fontSize={{ base: 14, md: 15, lg: 18 }}
               align={{ base: 'center', md: 'justify' }}
             >
@@ -206,36 +266,57 @@ const Home: NextPage = () => {
               with the currently dominating technologies.
             </Text>
             <Divider
+              as={motion.hr}
+              variants={scale}
+              initial="start"
+              whileInView="end"
               variant="solid"
               borderColor={useColorModeValue('textDark', 'textLight')}
               my={3}
             />
-            <Text align={{ base: 'center', md: 'left' }}>
+            <Text
+              as={motion.p}
+              variants={visibility}
+              initial="start"
+              whileInView="end"
+              align={{ base: 'center', md: 'left' }}
+            >
               A Few technologies I&apos;ve been working with recently:
             </Text>
 
-            <HStack spacing={5} my={3}>
-              <Box>
+            <MotionHStack
+              as={motion.div}
+              transition={{ staggerChildren: 0.3 }}
+              initial="start"
+              whileInView="end"
+              spacing={5}
+              my={3}
+            >
+              <Box as={motion.div} variants={slideLeft}>
                 <ChevronRightIcon
                   color={useColorModeValue('blueLight.500', 'blueDark.200')}
                 />
                 TypeScript
               </Box>
-              <Box>
+              <Box as={motion.div} variants={slideLeft}>
                 <ChevronRightIcon
                   color={useColorModeValue('blueLight.500', 'blueDark.200')}
                 />
                 NodeJS
               </Box>
-              <Box>
+              <Box as={motion.div} variants={slideLeft}>
                 <ChevronRightIcon
                   color={useColorModeValue('blueLight.500', 'blueDark.200')}
                 />
                 ChakraUI
               </Box>
-            </HStack>
+            </MotionHStack>
             <NextLink href="/skills" passHref>
               <Button
+                as={motion.button}
+                variants={rise}
+                initial="start"
+                whileInView="end"
                 mt={5}
                 colorScheme={useColorModeValue('blueLight', 'blueDark')}
                 color={useColorModeValue('textLight', 'textDark')}
