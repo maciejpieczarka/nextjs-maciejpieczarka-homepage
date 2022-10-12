@@ -21,8 +21,10 @@ const SocialIcon = ({ icon, ariaValue, link }: ISocialIconProps) => {
         variant="ghost"
         _hover={{
           background: 'transparent',
-          transform: 'rotate(15deg)',
           color: `${useColorModeValue('blueLight.500', 'blueDark.200')}`,
+        }}
+        whileHover={{
+          rotate: 15,
         }}
         fontSize={{ base: '2em', md: '2.5em' }}
       />

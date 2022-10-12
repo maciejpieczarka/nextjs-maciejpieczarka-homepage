@@ -8,6 +8,8 @@ import {
 } from '@chakra-ui/react';
 import { CustomImg } from '../pages/index';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { rise } from '../lib/animationVariants';
 
 interface IWorkCardProps {
   img: string;
@@ -31,7 +33,14 @@ const WorkCard: React.FC<IWorkCardProps> = ({
   description,
 }) => {
   return (
-    <GridItem textAlign="center" width="100%" height="100%" position="relative">
+    <GridItem
+      as={motion.div}
+      variants={rise}
+      textAlign="center"
+      width="100%"
+      height="100%"
+      position="relative"
+    >
       <Box
         width={340}
         height={190}
