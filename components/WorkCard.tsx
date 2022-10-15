@@ -50,7 +50,7 @@ const WorkCard: React.FC<IWorkCardProps> = ({
         mx="auto"
         shadow="md"
       >
-        <CustomImg src={img} layout="fill" />
+        <CustomImg src={img} layout="fill" alt={`${title} preview image`} />
         <Flex
           position="absolute"
           top="0"

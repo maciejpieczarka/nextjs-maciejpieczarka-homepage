@@ -16,7 +16,12 @@ const MainLayout: NextPage<ILayoutProps> = ({ children, router }) => {
     <Box>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Maciej Pieczarka - Homepage</title>
+        <meta
+          name="description"
+          content="Maciej Pieczarka's Portfolio website"
+        />
+        <meta name="author" content="Maciej Pieczarka" />
+        <title>Maciej Pieczarka - portfolio website</title>
         <link rel="icon" type="image/x-icon" href="/icon.ico" />
       </Head>
 

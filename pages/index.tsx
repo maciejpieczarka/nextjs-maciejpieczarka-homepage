@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                 Hello!
               </Heading>
               <Heading
-                as={motion.h1}
+                as={motion.h2}
                 variants={slideRight}
                 initial="start"
                 whileInView="end"
@@ -224,6 +224,7 @@ const Home: NextPage = () => {
             >
               <CustomImg
                 src={`/about-img${useColorModeValue('-light', '-dark')}.svg`}
+                alt="About section image"
                 layout="fill"
               />
             </Box>
