@@ -21,6 +21,10 @@ const MainLayout: NextPage<ILayoutProps> = ({ children, router }) => {
           content="Maciej Pieczarka's personal portfolio website"
         />
         <meta name="author" content="Maciej Pieczarka" />
+        <meta
+          name="keywords"
+          content="portfolio, portfolio website, developer, maciej pieczarka, web development, nextjs, chakraui, fullstack, frontend"
+        />
         <title>Maciej Pieczarka - portfolio website</title>
         <link rel="icon" type="image/x-icon" href="/icon.ico" />
       </Head>
