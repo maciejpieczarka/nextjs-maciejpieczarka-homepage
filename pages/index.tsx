@@ -12,6 +12,8 @@ import {
   chakra,
   Divider,
   type StackProps,
+  LinkBox,
+  LinkOverlay,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import {
@@ -126,21 +128,23 @@ const Home: NextPage = () => {
                   Check My Work
                 </Button>
               </NextLink>
-              <Button
-                as={motion.button}
-                variants={riseDelay}
-                initial="start"
-                whileInView="end"
-                variant="outline"
-                borderWidth={2}
-                colorScheme={useColorModeValue('blueLight', 'blueDark')}
-                size="md"
-                rightIcon={<DownloadIcon />}
-              >
-                <Text color={useColorModeValue('textDark', 'textLight')}>
-                  Download CV
-                </Text>
-              </Button>
+              <LinkBox>
+                <Button
+                  as={motion.button}
+                  variants={riseDelay}
+                  initial="start"
+                  whileInView="end"
+                  variant="outline"
+                  borderWidth={2}
+                  colorScheme={useColorModeValue('blueLight', 'blueDark')}
+                  size="md"
+                  rightIcon={<DownloadIcon />}
+                >
+                  <NextLink href="/CV_Maciej_Pieczarka.pdf" passHref>
+                    <LinkOverlay isExternal>Download CV</LinkOverlay>
+                  </NextLink>
+                </Button>
+              </LinkBox>
             </Flex>
           </Box>
 
