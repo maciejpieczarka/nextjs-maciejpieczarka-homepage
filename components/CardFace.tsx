@@ -1,6 +1,8 @@
+'use client';
+
 import { Flex, useColorModeValue, Heading } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { CustomImg } from '../pages/index';
+import { CustomImg } from '../app/page';
 
 export interface ICardFaceProps {
   icon: string;

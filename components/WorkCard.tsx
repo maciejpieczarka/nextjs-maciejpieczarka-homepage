@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   GridItem,
@@ -6,7 +8,7 @@ import {
   useColorModeValue,
   Flex,
 } from '@chakra-ui/react';
-import { CustomImg } from '../pages/index';
+import { CustomImg } from '../app/page';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { rise } from '../lib/animationVariants';

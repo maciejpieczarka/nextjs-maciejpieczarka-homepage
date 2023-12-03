@@ -1,3 +1,5 @@
+'use client';
+
 import type { NextPage } from 'next';
 import NextLink from 'next/link';
 import Image from 'next/image';

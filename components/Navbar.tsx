@@ -1,3 +1,5 @@
+'use client';
+
 import NextLink from 'next/link';
 import {
   Box,
@@ -16,6 +18,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
 import ThemeToggleButton from './ThemeToggleBtn';
 import theme from '../lib/theme';
+import { usePathname } from 'next/navigation';
 
 interface ILinkItemProps {
   href: string;
@@ -39,11 +42,8 @@ const LinkItem: React.FC<ILinkItemProps> = ({ href, path, children }) => {
   );
 };
 
-interface INavbarProps {
-  path: string;
-}
-
-const Navbar: React.FC<INavbarProps> = ({ path }) => {
+const Navbar: React.FC = () => {
+  const pathname = usePathname();
   return (
     <Box
       w="100%"
@@ -64,13 +64,13 @@ const Navbar: React.FC<INavbarProps> = ({ path }) => {
             alignItems="center"
             color={useColorModeValue('textDark', 'textLight')}
           >
-            <LinkItem href="/" path={path}>
+            <LinkItem href="/" path={pathname}>
               Home
             </LinkItem>
-            <LinkItem href="/skills" path={path}>
+            <LinkItem href="/skills" path={pathname}>
               Skills
             </LinkItem>
-            <LinkItem href="/works" path={path}>
+            <LinkItem href="/works" path={pathname}>
               Works
             </LinkItem>
           </Stack>

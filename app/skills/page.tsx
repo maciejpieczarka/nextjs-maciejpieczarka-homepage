@@ -1,8 +1,10 @@
+'use client';
+
 import { Flex, type FlexProps } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import Sectionlayout from '../components/layouts/section';
-import SkillCard from '../components/SkillCard';
-import skills from '../lib/skills.json';
+import Sectionlayout from '../../components/layouts/section';
+import SkillCard from '../../components/SkillCard';
+import skills from '../../lib/skills.json';
 
 const MotionBox = motion<Omit<FlexProps, 'transition'>>(Flex);
 

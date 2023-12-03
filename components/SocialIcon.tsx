@@ -1,3 +1,5 @@
+'use client';
+
 import { IconButton, Link, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { scale } from '../lib/animationVariants';
