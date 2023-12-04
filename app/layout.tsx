@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
+import './globals.css';
 
 export const metadata: Metadata = {
   description: "Maciej Pieczarka's personal portfolio website",
@@ -31,7 +32,7 @@ export default function RootLayout({
         <Providers>
           <Fonts />
           <Navbar />
-          <Container maxW="container.xl" mt="57px">
+          <Container maxW="container.xl" position="relative">
             {children}
             <Footer />
           </Container>

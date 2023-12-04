@@ -1,7 +1,7 @@
 'use client';
 
 import type { NextPage } from 'next';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 import {
   Box,
@@ -12,8 +12,6 @@ import {
   Button,
   HStack,
   chakra,
-  Divider,
-  type StackProps,
   LinkBox,
   LinkOverlay,
 } from '@chakra-ui/react';
@@ -27,6 +25,7 @@ import {
   scale,
 } from '../lib/animationVariants';
 import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { FaChevronRight } from 'react-icons/fa';
 import {
   AiOutlineGithub,
   AiOutlineInstagram,
@@ -34,7 +33,6 @@ import {
 } from 'react-icons/ai';
 import { BsArrow90DegDown } from 'react-icons/bs';
 
-import Sectionlayout from '../components/layouts/section';
 import SocialIcon from '../components/SocialIcon';
 
 export const CustomImg = chakra(Image, {
@@ -43,8 +41,6 @@ export const CustomImg = chakra(Image, {
     return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
   },
 });
-
-const MotionHStack = motion<Omit<StackProps, 'transition'>>(HStack);
 
 const Home: NextPage = () => {
   return (
@@ -115,7 +111,7 @@ const Home: NextPage = () => {
               m={{ base: 'auto', md: '0' }}
               maxW="max-content"
             >
-              <NextLink href="/works" passHref>
+              <Link href="/works" passHref>
                 <Button
                   as={motion.button}
                   variants={rise}
@@ -129,7 +125,7 @@ const Home: NextPage = () => {
                 >
                   Check My Work
                 </Button>
-              </NextLink>
+              </Link>
               <LinkBox>
                 <Button
                   as={motion.button}
@@ -142,9 +138,9 @@ const Home: NextPage = () => {
                   size="md"
                   rightIcon={<DownloadIcon />}
                 >
-                  <NextLink href="/CV_Maciej_Pieczarka.pdf" passHref>
+                  <Link href="/CV_Maciej_Pieczarka.pdf" passHref>
                     <LinkOverlay isExternal>Download CV</LinkOverlay>
-                  </NextLink>
+                  </Link>
                 </Button>
               </LinkBox>
             </Flex>
@@ -213,130 +209,121 @@ const Home: NextPage = () => {
           </HStack>
         </Flex>
       </Flex>
-      <Sectionlayout heading="about">
-        <Flex align="center" gap={4} py="10">
-          <Flex
-            display={{ base: 'none', md: 'flex' }}
-            flex={1}
-            justify="flex-end"
+      <div
+        className="flex flex-col items-center w-full mb-20 gap-10"
+        id="about"
+      >
+        <Link href="/#about">
+          <h1 className="mb-6 after:bg-blueLight-500 dark:after:bg-blueDark-200 text-textDark dark:text-textLight  text-4xl font-bold text-center relative pb-1 content-none after:absolute after:rounded-full after:w-1/2 after:h-1 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:transition-all after:duration-300 after:ease hover:after:w-[125%]">
+            About
+          </h1>
+        </Link>
+
+        <div className="flex items-stretch gap-6 ">
+          <motion.div
+            className="hidden md:flex flex-1 justify-end relative w-[350px] h-[350px] lg:w-[450px] lg:h-[450px] "
+            variants={scale}
+            initial="start"
+            whileInView="end"
           >
-            <Box
-              as={motion.div}
-              variants={scale}
-              initial="start"
-              whileInView="end"
-              position="relative"
-              boxSize={{ md: 400, lg: 500 }}
-            >
-              <CustomImg
-                src={`/about-img${useColorModeValue('-light', '-dark')}.svg`}
-                alt="About section image"
-                layout="fill"
-              />
-            </Box>
-          </Flex>
-          <Flex
-            width="50%"
-            direction="column"
-            align={{ base: 'center', md: 'flex-start' }}
-            flex={1}
-          >
-            <Text
-              as={motion.p}
+            <Image
+              className="hidden dark:block"
+              src={`/about-img-dark.svg`}
+              alt="About section image"
+              fill
+            />
+            <Image
+              className="dark:hidden"
+              src={`/about-img-light.svg`}
+              alt="About section image"
+              fill
+            />
+          </motion.div>
+
+          <div className="flex flex-col flex-1  items-center md:items-start justify-center">
+            <motion.p
+              className="text-base md:text-lg lg:text-xl text-center md:text-justify"
               variants={slideRight}
               initial="start"
               whileInView="end"
-              fontSize={{ base: 14, md: 15, lg: 18 }}
-              align={{ base: 'center', md: 'justify' }}
             >
               Hi, I&apos;m{' '}
-              <Text as="span" variant="highlight">
+              <span className="font-bold text-blueLight-500 dark:text-blueDark-200">
                 Maciej Pieczarka
-              </Text>
+              </span>
               , a self-taught{' '}
-              <Text as="span" variant="highlight">
+              <span className="font-bold text-blueLight-500 dark:text-blueDark-200">
                 full-stack developer
-              </Text>{' '}
+              </span>{' '}
               from Poland. Currently a student in the Technical High School of
               IT and Electronic on a{' '}
-              <Text as="span" variant="highlight">
+              <span className="font-bold text-blueLight-500 dark:text-blueDark-200">
                 Programmer Technician
-              </Text>{' '}
+              </span>{' '}
               profile. Since the beginning of my journey with Web Dev{' '}
-              <Text as="span" variant="highlight">
+              <span className="font-bold text-blueLight-500 dark:text-blueDark-200">
                 5 years ago
-              </Text>
+              </span>
               , I fell in love with learning new stuff, trying to{' '}
-              <Text as="span" variant="highlight">
+              <span className="font-bold text-blueLight-500 dark:text-blueDark-200">
                 always stay up-to-date
-              </Text>{' '}
+              </span>{' '}
               with the currently dominating technologies.
-            </Text>
-            <Divider
-              as={motion.hr}
+            </motion.p>
+            <motion.hr
+              className="h-px border-0 w-full my-3 bg-textDark dark:bg-textLight"
               variants={scale}
               initial="start"
               whileInView="end"
-              variant="solid"
-              borderColor={useColorModeValue('textDark', 'textLight')}
-              my={3}
             />
-            <Text
-              as={motion.p}
+            <motion.p
+              className="text-center md:text-left"
               variants={visibility}
               initial="start"
               whileInView="end"
-              align={{ base: 'center', md: 'left' }}
             >
               A Few technologies I&apos;ve been working with recently:
-            </Text>
+            </motion.p>
 
-            <MotionHStack
-              as={motion.div}
+            <motion.div
+              className="flex flex-row gap-5 my-3"
               transition={{ staggerChildren: 0.3 }}
               initial="start"
               whileInView="end"
-              spacing={5}
-              my={3}
             >
-              <Box as={motion.div} variants={slideLeft}>
-                <ChevronRightIcon
-                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
-                />
-                TypeScript
-              </Box>
-              <Box as={motion.div} variants={slideLeft}>
-                <ChevronRightIcon
-                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
-                />
-                NodeJS
-              </Box>
-              <Box as={motion.div} variants={slideLeft}>
-                <ChevronRightIcon
-                  color={useColorModeValue('blueLight.500', 'blueDark.200')}
-                />
-                ChakraUI
-              </Box>
-            </MotionHStack>
-            <NextLink href="/skills" passHref>
-              <Button
-                as={motion.button}
+              <motion.div variants={slideLeft} className="flex items-center">
+                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
+                <motion.p className="font-semibold text-sm md:text-base">
+                  Next.js
+                </motion.p>
+              </motion.div>
+              <motion.div variants={slideLeft} className="flex items-center">
+                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
+                <motion.p className="font-semibold text-sm md:text-base">
+                  TypeScript
+                </motion.p>
+              </motion.div>
+              <motion.div variants={slideLeft} className="flex items-center">
+                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
+                <motion.p className="font-semibold text-sm md:text-base">
+                  Prisma & MongoDB
+                </motion.p>
+              </motion.div>
+            </motion.div>
+            <Link href="/skills" className="mt-5" passHref>
+              <motion.button
+                className="flex py-2 px-4 items-center gap-2  transition-colors ease-in duration-200 bg-blueLight-500 hover:bg-blueLight-600  text-textLight dark:text-textDark dark:hover:bg-blueDark-300 rounded-md dark:bg-blueDark-200"
                 variants={rise}
                 initial="start"
                 whileInView="end"
-                mt={5}
-                colorScheme={useColorModeValue('blueLight', 'blueDark')}
-                color={useColorModeValue('textLight', 'textDark')}
-                variant="solid"
-                size="md"
-                rightIcon={<ChevronRightIcon />}
               >
                 My Skills
-              </Button>
-            </NextLink>
-          </Flex>
-        </Flex>
-      </Sectionlayout>
+                <FaChevronRight size={14} />
+              </motion.button>
+            </Link>
+          </div>
+        </div>
+      </div>
     </Box>
   );
 };
