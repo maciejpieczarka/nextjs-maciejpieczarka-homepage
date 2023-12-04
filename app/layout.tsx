@@ -34,8 +34,8 @@ export default function RootLayout({
           <Navbar />
           <Container maxW="container.xl" position="relative">
             {children}
-            <Footer />
           </Container>
+          <Footer />
         </Providers>
       </body>
     </html>
