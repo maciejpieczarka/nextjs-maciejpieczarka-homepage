@@ -1,69 +1,83 @@
 'use client';
+import * as React from 'react';
+import { motion } from 'framer-motion';
+import { IoClose, IoMenu } from 'react-icons/io5';
 
-import NextLink from 'next/link';
-import {
-  Box,
-  Container,
-  Flex,
-  Stack,
-  Link,
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  IconButton,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import Logo from './Logo';
+// Components
 import ThemeToggleButton from './ThemeToggleBtn';
-import theme from '../lib/theme';
+import Link from 'next/link';
+import Logo from './Logo';
+
+// hooks
 import { usePathname } from 'next/navigation';
+import { useOutsideAlerter } from '../hooks/useOutsideAlerter';
 
 interface ILinkItemProps {
   href: string;
   path: string;
   children: React.ReactNode;
+  mobile?: boolean;
 }
 
-const LinkItem: React.FC<ILinkItemProps> = ({ href, path, children }) => {
+const LinkItem: React.FC<ILinkItemProps> = ({
+  href,
+  path,
+  children,
+  mobile = false,
+}) => {
   const active = path === href;
 
   return (
-    <NextLink href={href} passHref>
-      <Link
-        textDecoration={active ? 'underline' : 'none'}
-        fontWeight={active ? 'semibold' : 'light'}
-        fontFamily={theme.fonts.heading}
-      >
-        {children}
-      </Link>
-    </NextLink>
+    <>
+      {mobile ? (
+        <Link
+          href={href}
+          className={`${active ? 'font-semibold' : 'font-light'} font-nunito`}
+        >
+          <div
+            className={`px-2 py-2  ${
+              active && 'bg-gray-100'
+            } hover:bg-gray-100`}
+          >
+            {children}
+          </div>
+        </Link>
+      ) : (
+        <Link
+          href={href}
+          className={`${
+            active ? 'underline font-semibold' : 'no-underline font-light'
+          } font-nunito`}
+        >
+          {children}
+        </Link>
+      )}
+    </>
   );
 };
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const mobileNavRef = React.useRef<HTMLDivElement>(null);
+  const clickedOutside = useOutsideAlerter(mobileNavRef);
+
+  React.useEffect(() => {
+    setIsOpen(false); // Close the navigation panel
+  }, [pathname]);
+
+  React.useEffect(() => {
+    if (clickedOutside) {
+      setIsOpen(false);
+    }
+  }, [clickedOutside]);
+
   return (
-    <Box
-      w="100%"
-      as="nav"
-      bg={useColorModeValue('#F4E9DF', '#27272B')}
-      position="fixed"
-      top="0"
-      style={{ backdropFilter: 'blur(1em)' }}
-      zIndex={2}
-    >
-      <Container maxW="container.xl">
-        <Flex justifyContent="space-between" alignItems="center">
+    <nav className="w-full bg-[#F4E9DF] dark:bg-[#27272B] sticky top-0 backdrop-blur-sm z-10 py-1">
+      <div className="px-2 md:px-0 max-w-7xl mx-auto ">
+        <div className="flex justify-between items-center">
           <Logo />
-          <Stack
-            direction={{ base: 'column', md: 'row' }}
-            width={{ base: 'full', md: 'auto' }}
-            display={{ base: 'none', md: 'flex' }}
-            alignItems="center"
-            color={useColorModeValue('textDark', 'textLight')}
-          >
+          <div className="hidden md:flex justify-center items-center gap-2 w-full  text-textDark dark:text-textLight ">
             <LinkItem href="/" path={pathname}>
               Home
             </LinkItem>
@@ -73,44 +87,48 @@ const Navbar: React.FC = () => {
             <LinkItem href="/works" path={pathname}>
               Works
             </LinkItem>
-          </Stack>
+          </div>
 
-          <Box>
+          <div className="flex items-center gap-2">
             <ThemeToggleButton />
-            <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
-              <Menu>
-                {({ isOpen }) => (
-                  <>
-                    {' '}
-                    <MenuButton
-                      as={IconButton}
-                      aria-label="Menu-button"
-                      colorScheme="gray"
-                      icon={
-                        isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon />
-                      }
-                    />
-                    <MenuList>
-                      <NextLink href="/" passHref>
-                        <MenuItem as={Link}>Home</MenuItem>
-                      </NextLink>
-
-                      <NextLink href="/skills" passHref>
-                        <MenuItem as={Link}>Skills</MenuItem>
-                      </NextLink>
-
-                      <NextLink href="/works" passHref>
-                        <MenuItem as={Link}>Works</MenuItem>
-                      </NextLink>
-                    </MenuList>
-                  </>
+            <div className="md:hidden relative">
+              <button
+                className=" w-10 h-10 rounded-md flex items-center justify-center bg-gray-100"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Menu-button"
+              >
+                {isOpen ? (
+                  <IoClose className="text-textDark text-2xl" />
+                ) : (
+                  <IoMenu className="text-textDark text-2xl" />
                 )}
-              </Menu>
-            </Box>
-          </Box>
-        </Flex>
-      </Container>
-    </Box>
+              </button>
+
+              {isOpen && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  ref={mobileNavRef}
+                  className="absolute flex flex-col w-56 bg-white mt-2 right-0 py-2 rounded-md border-gray-300 border"
+                >
+                  <LinkItem mobile href="/" path={pathname}>
+                    Home
+                  </LinkItem>
+
+                  <LinkItem mobile href="/skills" path={pathname}>
+                    Skills
+                  </LinkItem>
+
+                  <LinkItem mobile href="/works" path={pathname}>
+                    Works
+                  </LinkItem>
+                </motion.div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

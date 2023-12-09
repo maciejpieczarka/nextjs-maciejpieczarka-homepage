@@ -1,35 +1,30 @@
-'use client';
-
-import { IconButton, Link, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { scale } from '../lib/animationVariants';
+import Link from 'next/link';
 
 interface ISocialIconProps {
-  icon: JSX.Element;
+  children: React.ReactNode;
   ariaValue: string;
   link: string;
 }
 
-const SocialIcon = ({ icon, ariaValue, link }: ISocialIconProps) => {
+const SocialIcon = ({ children, ariaValue, link }: ISocialIconProps) => {
   return (
-    <Link href={link} target="_blank" rel="noopener">
-      <IconButton
-        as={motion.button}
+    <Link
+      href={link}
+      target="_blank"
+      rel="noopener"
+      className="transition-transform duration-300 ease-in-out hover:rotate-12 "
+    >
+      <motion.button
+        className="bg-transparent hover:text-blueLight-500 dark:hover:text-blueDark-200 text-2xl md:text-4xl"
         variants={scale}
         initial="start"
         whileInView="end"
-        icon={icon}
         aria-label={ariaValue}
-        variant="ghost"
-        _hover={{
-          background: 'transparent',
-          color: `${useColorModeValue('blueLight.500', 'blueDark.200')}`,
-        }}
-        whileHover={{
-          rotate: 15,
-        }}
-        fontSize={{ base: '2em', md: '2.5em' }}
-      />
+      >
+        {children}
+      </motion.button>
     </Link>
   );
 };

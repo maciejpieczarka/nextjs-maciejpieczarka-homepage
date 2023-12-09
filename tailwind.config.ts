@@ -6,6 +6,9 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      nunito: ['Nunito', 'sans-serif'],
+    },
     extend: {
       colors: {
         textDark: '#202023',

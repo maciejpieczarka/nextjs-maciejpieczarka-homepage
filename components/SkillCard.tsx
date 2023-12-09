@@ -1,15 +1,6 @@
-'use client';
-
+import * as React from 'react';
 import { motion } from 'framer-motion';
-import { CloseIcon } from '@chakra-ui/icons';
-import {
-  Flex,
-  Text,
-  useColorModeValue,
-  Box,
-  IconButton,
-} from '@chakra-ui/react';
-import { useState } from 'react';
+import { IoClose } from 'react-icons/io5';
 import CardFace from './CardFace';
 import type { ICardFaceProps } from './CardFace';
 import { slideRight, rise } from '../lib/animationVariants';
@@ -22,62 +13,26 @@ interface ISkillCardProps extends ICardFaceProps {
 }
 
 const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const modalBg = useColorModeValue('textDark', 'textLight');
-  const cardBg = useColorModeValue('#E6D9CE', '#2B2B2E');
-  const btnColor = useColorModeValue('blueLight.500', 'blueDark.200');
+  const [selectedCard, setSelectedCard] = React.useState<string | null>(null);
 
   return (
     <>
-      <Box
-        padding={12}
-        borderRadius={20}
-        shadow="lg"
-        bg={cardBg}
-        as={motion.div}
+      <motion.div
+        className="p-12 rounded-3xl shadow-lg bg-[#E6D9CE] dark:bg-[#2B2B2E] cursor-pointer hover:shadow-xl"
         variants={rise}
         layoutId={title}
         onClick={() => setSelectedCard(title)}
-        cursor="pointer"
-        _hover={{ shadow: 'xl' }}
       >
         <CardFace title={title} icon={icon} />
-      </Box>
+      </motion.div>
 
       {selectedCard && (
         <>
-          <Box
-            position="fixed"
-            top={0}
-            left={0}
-            height="100vh"
-            width="100vw"
-            bg={modalBg}
-            opacity={0.5}
-            zIndex={2}
-          />
-          <Flex
-            position="fixed"
-            top={0}
-            left={0}
-            right={0}
-            bottom={0}
-            align="center"
-            justify="center"
-            zIndex={3}
-          >
-            <Flex
-              position="relative"
-              padding={12}
-              borderRadius={20}
-              shadow="xl"
-              gap={12}
-              justify="center"
-              align="center"
-              as={motion.div}
-              direction={{ base: 'column', md: 'row' }}
+          <div className="fixed top-0 left-0 h-screen w-screen bg-textDark dark:bg-textLight opacity-50 z-10" />
+          <div className="flex fixed inset-0 items-center justify-center z-20">
+            <motion.div
+              className="flex flex-col md:flex-row relative p-12 rounded-3xl shadow-xl gap-12 justify-center items-center bg-[#E6D9CE] dark:bg-[#2B2B2E]"
               layoutId={title}
-              bg={cardBg}
             >
               <CardFace title={title} icon={icon} />
               <motion.ul
@@ -86,28 +41,29 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
                 transition={{ delayChildren: 0.1, staggerChildren: 0.1 }}
               >
                 {listContent.map(({ skillName, skillDesc }) => (
-                  <motion.li key={skillName} variants={slideRight}>
-                    <Text as="span" fontWeight="bold">
-                      {skillName}
-                    </Text>
+                  <motion.li
+                    className="list-disc"
+                    key={skillName}
+                    variants={slideRight}
+                  >
+                    <span className="font-bold">{skillName}</span>
                     &nbsp;-&nbsp;{skillDesc}
                   </motion.li>
                 ))}
               </motion.ul>
-              <Box position="absolute" top={6} right={6}>
-                <IconButton
-                  variant="unstyled"
-                  icon={<CloseIcon />}
+              <div className="absolute top-6 right-6">
+                <button
+                  className="text-3xl hover:text-blueLight-500 dark:hover:blueDark-200"
                   aria-label="Hide details"
                   onClick={() => {
                     setSelectedCard(null);
                   }}
-                  _hover={{ color: btnColor }}
-                  fontSize="14px"
-                />
-              </Box>
-            </Flex>
-          </Flex>
+                >
+                  <IoClose />
+                </button>
+              </div>
+            </motion.div>
+          </div>
         </>
       )}
     </>

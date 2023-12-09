@@ -1,5 +1,4 @@
 'use client';
-
 import { Global } from '@emotion/react';
 
 const Fonts = () => (

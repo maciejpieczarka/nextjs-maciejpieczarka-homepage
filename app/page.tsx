@@ -192,20 +192,23 @@ const Home: NextPage = () => {
           </Flex>
           <HStack spacing={4}>
             <SocialIcon
-              icon={<AiOutlineGithub />}
               ariaValue="Github Profile"
               link="https://github.com/maciejpieczarka"
-            />
+            >
+              <AiOutlineGithub />
+            </SocialIcon>
             <SocialIcon
-              icon={<AiOutlineInstagram />}
               ariaValue="Github Profile"
               link="https://www.instagram.com/pieczareq_/"
-            />
+            >
+              <AiOutlineInstagram />
+            </SocialIcon>
             <SocialIcon
-              icon={<AiFillLinkedin />}
               ariaValue="Github Profile"
               link="https://www.linkedin.com/in/maciej-pieczarka-2311821a4/"
-            />
+            >
+              <AiFillLinkedin />
+            </SocialIcon>
           </HStack>
         </Flex>
       </Flex>
