@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react';
 import Fonts from '../components/Fonts';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -32,9 +31,7 @@ export default function RootLayout({
         <Providers>
           <Fonts />
           <Navbar />
-          <Container maxW="container.xl" position="relative">
-            {children}
-          </Container>
+          <div className="max-w-7xl relative mx-auto">{children}</div>
           <Footer />
         </Providers>
       </body>

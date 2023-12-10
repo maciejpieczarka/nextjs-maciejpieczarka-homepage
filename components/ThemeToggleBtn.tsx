@@ -1,5 +1,8 @@
+import * as React from 'react';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { TiWeatherSunny } from 'react-icons/ti';
+import { FaSpinner } from 'react-icons/fa';
 import { IoMdMoon } from 'react-icons/io';
 import { useTheme } from 'next-themes';
 
@@ -8,7 +11,7 @@ const ThemeToggleButton = () => {
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence>
       {currentTheme === 'dark' ? (
         <motion.button
           className="w-10 h-10 rounded-md bg-orange-300 flex items-center justify-center text-textDark text-xl"

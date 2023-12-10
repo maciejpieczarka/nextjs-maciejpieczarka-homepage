@@ -1,44 +1,17 @@
 'use client';
-import {
-  Button,
-  SimpleGrid,
-  useColorModeValue,
-  type SimpleGridProps,
-} from '@chakra-ui/react';
 import WorkCard from '../../../components/WorkCard';
 import { motion } from 'framer-motion';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { FaChevronRight } from 'react-icons/fa';
 import { slideRight } from '../../../lib/animationVariants';
-
-const MotionSimpleGrid =
-  motion<Omit<SimpleGridProps, 'transition'>>(SimpleGrid);
-
-// type MetadataProps = {
-//   params: { sectionTitle: string };
-// };
-
-// export async function generateMetadata({
-//   params,
-// }: MetadataProps): Promise<Metadata> {
-
-//   const sectionTitle = params.sectionTitle;
-
-//   return {
-//     title: sectionTitle,
-//   };
-// }
 
 const WorksPage = () => {
   return (
     <>
-      <MotionSimpleGrid
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-20 mb-5"
         initial="start"
         whileInView="end"
         transition={{ staggerChildren: 0.2 }}
-        columns={{ base: 1, md: 2, lg: 3 }}
-        width="100%"
-        spacing={20}
-        mb={5}
       >
         <WorkCard
           img="/work-images/colorGenerator.png"
@@ -63,25 +36,20 @@ const WorksPage = () => {
           title="Portfolio Website"
           description="My own portfolio website built using Next.js and TypeScript."
         />
-      </MotionSimpleGrid>
+      </motion.div>
       <a
         href="https://github.com/maciejpieczarka?tab=repositories"
         target="_blank"
         rel="noreferrer"
       >
-        <Button
-          as={motion.button}
+        <motion.button
+          className="flex items-center gap-2 py-2 px-4 font-semibold bg-blueLight-500 dark:bg-blueDark-200 text-textLight dark:text-textDark rounded-md"
           variants={slideRight}
           initial="start"
           whileInView="end"
-          colorScheme={useColorModeValue('blueLight', 'blueDark')}
-          color={useColorModeValue('textLight', 'textDark')}
-          variant="solid"
-          size="md"
-          rightIcon={<ChevronRightIcon />}
         >
-          See More
-        </Button>
+          See More <FaChevronRight />
+        </motion.button>
       </a>
     </>
   );

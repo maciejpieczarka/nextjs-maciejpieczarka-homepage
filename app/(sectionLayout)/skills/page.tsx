@@ -1,22 +1,15 @@
 'use client';
-
-import { Flex, type FlexProps } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import SkillCard from '../../../components/SkillCard';
 import skills from '../../../lib/skills.json';
 
-const MotionBox = motion<Omit<FlexProps, 'transition'>>(Flex);
-
 const SkillsPage = () => {
   return (
-    <MotionBox
-      as={motion.div}
-      gap={10}
-      direction={{ base: 'column', md: 'row' }}
+    <motion.div
+      className="flex flex-col md:flex-row gap-10 mt-10"
       initial="start"
       whileInView="end"
       transition={{ staggerChildren: 0.2 }}
-      mt={10}
     >
       <SkillCard
         title="Frontend"
@@ -31,7 +24,7 @@ const SkillsPage = () => {
       />
 
       <SkillCard title="Tools" icon="tools-icon" listContent={skills.tools} />
-    </MotionBox>
+    </motion.div>
   );
 };
 

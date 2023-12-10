@@ -1,6 +1,6 @@
-import { CustomImg } from '../app/page';
 import { motion } from 'framer-motion';
 import { rise } from '../lib/animationVariants';
+import Image from 'next/image';
 
 interface IWorkCardProps {
   img: string;
@@ -20,7 +20,7 @@ const WorkCard: React.FC<IWorkCardProps> = ({
   return (
     <motion.div className="text-center w-full h-full relative" variants={rise}>
       <div className="aspect-video relative rounded-3xl overflow-hidden mx-auto shadow-md">
-        <CustomImg src={img} layout="fill" alt={`${title} preview image`} />
+        <Image src={img} fill alt={`${title} preview image`} />
         <div className="flex absolute inset-0 flex-col items-center justify-center gap-10 opacity-0 transition-opacity duration-300 ease-in hover:opacity-90 bg-textDark dark:bg-textLight">
           <a href={url} target="_blank" rel="noreferrer noopener">
             <p className="cursor-pointer underline text-xl text-textLight dark:text-textDark">

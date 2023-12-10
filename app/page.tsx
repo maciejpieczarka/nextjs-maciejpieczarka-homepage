@@ -1,20 +1,7 @@
 'use client';
 
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Box,
-  Flex,
-  Text,
-  Heading,
-  useColorModeValue,
-  Button,
-  HStack,
-  chakra,
-  LinkBox,
-  LinkOverlay,
-} from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import {
   slideLeft,
@@ -24,173 +11,106 @@ import {
   visibility,
   scale,
 } from '../lib/animationVariants';
-import { DownloadIcon, ChevronRightIcon } from '@chakra-ui/icons';
+//Icons
 import { FaChevronRight } from 'react-icons/fa';
+import { IoMdDownload } from 'react-icons/io';
 import {
   AiOutlineGithub,
   AiOutlineInstagram,
   AiFillLinkedin,
 } from 'react-icons/ai';
-import { BsArrow90DegDown } from 'react-icons/bs';
+import { MdKeyboardDoubleArrowDown } from 'react-icons/md';
 
 import SocialIcon from '../components/SocialIcon';
 
-export const CustomImg = chakra(Image, {
-  baseStyle: { maxH: '100%', maxW: '100%' },
-  shouldForwardProp: prop => {
-    return ['width', 'height', 'layout', 'src', 'alt'].includes(prop);
-  },
-});
-
-const Home: NextPage = () => {
+const Home = () => {
   return (
-    <Box>
-      <Flex
-        height="calc(100vh - 57px)"
-        direction="column"
-        justify="center"
-        align="center"
-        gap={{ base: 10, md: 20 }}
-      >
-        <Flex
-          direction={{ base: 'column-reverse', md: 'row' }}
-          gap={{ base: '6', md: '0' }}
-          align="center"
-          justify={{ base: 'center', md: 'space-between' }}
-          w="100%"
-        >
-          <Box textAlign={{ base: 'center', md: 'left' }}>
-            <Box mb={5}>
-              <Heading
-                as={motion.h3}
+    <div>
+      <div className="flex flex-col justify-center items-center h-screen gap-10 md:gap-24">
+        <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-0 items-center justify-center md:justify-between w-full">
+          <div className="text-center md:text-left">
+            <div className="mb-5">
+              <motion.h3
+                className="text-lg md:text-3xl font-bold text-textDark dark:text-textLight"
                 variants={slideLeft}
                 initial="start"
                 whileInView="end"
-                size={{ base: 'md', md: 'lg' }}
-                fontWeight="bold"
               >
                 Hello!
-              </Heading>
-              <Heading
-                as={motion.h2}
+              </motion.h3>
+              <motion.h2
+                className="text-2xl md:text-5xl font-bold text-textDark dark:text-textLight"
                 variants={slideRight}
                 initial="start"
                 whileInView="end"
-                size={{ base: 'xl', lg: '2xl' }}
-                fontWeight="bold"
               >
                 I am Maciej Pieczarka
-              </Heading>
-              <Text
-                as={motion.p}
+              </motion.h2>
+              <motion.p
+                className="bg-blueLight-500 text-textLight dark:bg-blueDark-200 dark:text-textDark text-md md:text-lg px-4 md:pl-1 md:pr-0 my-2 rounded-b-3xl md:rounded-br-3xl md:rounded-bl-none"
                 variants={visibility}
                 initial="start"
                 whileInView="end"
-                bg={useColorModeValue('blueLight.500', 'blueDark.200')}
-                color={useColorModeValue('textLight', 'textDark')}
-                fontSize={{ base: 'md', md: 'lg' }}
-                pl={{ base: 'none', md: 0.5 }}
-                borderRadius={{ base: '0 0 1.5em 1.5em', md: '0 0 1.5em 0' }}
-                my={2}
               >
                 Junior Web Developer &amp; Designer{' '}
-              </Text>
-              <Text
-                fontWeight="light"
-                as={motion.p}
+              </motion.p>
+              <motion.p
+                className="font-light text-textDark dark:text-textLight"
                 variants={visibility}
                 initial="start"
                 whileInView="end"
               >
                 From Poland
-              </Text>
-            </Box>
-            <Flex
-              direction={{ base: 'column', md: 'row' }}
-              gap={3}
-              m={{ base: 'auto', md: '0' }}
-              maxW="max-content"
-            >
-              <Link href="/works" passHref>
-                <Button
-                  as={motion.button}
+              </motion.p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-3 m-auto md:m-0 max-w-max ">
+              <Link href="/works">
+                <motion.button
+                  className="flex items-center py-2 px-4 gap-2 font-semibold rounded-md bg-blueLight-500 hover:bg-blueLight-600 dark:bg-blueDark-200 hover:dark:bg-blueDark-300 text-textLight dark:text-textDark"
                   variants={rise}
                   initial="start"
                   whileInView="end"
-                  colorScheme={useColorModeValue('blueLight', 'blueDark')}
-                  color={useColorModeValue('textLight', 'textDark')}
-                  variant="solid"
-                  size="md"
-                  rightIcon={<ChevronRightIcon />}
                 >
-                  Check My Work
-                </Button>
+                  Check My Work <FaChevronRight />
+                </motion.button>
               </Link>
-              <LinkBox>
-                <Button
-                  as={motion.button}
+              <Link href="/CV_Maciej_Pieczarka.pdf" target="_blank">
+                <motion.button
+                  className="w-full flex items-center py-2 px-4 gap-2 font-semibold rounded-md outline outline-2 outline-blueLight-500 hover:bg-textDark hover:text-textLight hover:outline-none hover:dark:outline-none hover:dark:bg-textLight hover:dark:text-textDark dark:outline-blueDark-200 text-blueLight-500 dark:text-blueDark-200"
                   variants={riseDelay}
                   initial="start"
                   whileInView="end"
-                  variant="outline"
-                  borderWidth={2}
-                  colorScheme={useColorModeValue('blueLight', 'blueDark')}
-                  size="md"
-                  rightIcon={<DownloadIcon />}
                 >
-                  <Link href="/CV_Maciej_Pieczarka.pdf" passHref>
-                    <LinkOverlay isExternal>Download CV</LinkOverlay>
-                  </Link>
-                </Button>
-              </LinkBox>
-            </Flex>
-          </Box>
+                  Download CV <IoMdDownload />
+                </motion.button>
+              </Link>
+            </div>
+          </div>
 
-          <Box
-            as={motion.div}
+          <motion.div
+            className="w-[100px] h-[100px] md:w-[300px] md:h-[300px] lg:w-[450px] lg:h-[450px] overflow-hidden rounded-full relative border-4 md:border-6 lg:border-8 border-textLight"
             variants={rise}
             initial="start"
             whileInView="end"
-            boxSize={{ base: 100, md: 300, lg: 450 }}
-            borderWidth={{ base: '.3em', md: '1em' }}
-            borderStyle="solid"
-            borderColor="textLight"
-            borderRadius="full"
-            position="relative"
           >
-            <CustomImg
-              borderRadius="full"
-              src="/HeroImg.jpg"
-              alt="Profile Picture"
-              layout="fill"
-            />
-          </Box>
-        </Flex>
+            <Image src="/HeroImg.jpg" alt="Profile Picture" fill />
+          </motion.div>
+        </div>
 
-        <Flex direction="column" gap={2}>
-          <Flex
-            as={motion.div}
+        <div className="flex flex-col gap-4 items-center">
+          <motion.div
+            className="flex justify-start items-center gap-2 w-full"
             variants={visibility}
             initial="start"
             whileInView="end"
-            justify="flex-start"
-            position="relative"
-            left="-8"
           >
-            <Text display="inline-block" lineHeight="2em">
+            <MdKeyboardDoubleArrowDown className="animate-bounce text-lg md:text-xl text-blueLight-500 dark:text-blueDark-200" />
+            <p className="text-sm md:text-xl text-textDark dark:text-textLight">
               Find Me Here
-            </Text>
-            <BsArrow90DegDown
-              size="1.2em"
-              fill={useColorModeValue('#1363d2', '#8AB3FF')}
-              style={{
-                display: 'inline-block',
-                transform: 'scaleX(-1)',
-                alignSelf: 'flex-end',
-              }}
-            />
-          </Flex>
-          <HStack spacing={4}>
+            </p>
+            <MdKeyboardDoubleArrowDown className="animate-bounce text-lg md:text-xl text-blueLight-500 dark:text-blueDark-200" />
+          </motion.div>
+          <div className="flex items-center justify-center gap-4 w-full">
             <SocialIcon
               ariaValue="Github Profile"
               link="https://github.com/maciejpieczarka"
@@ -209,9 +129,9 @@ const Home: NextPage = () => {
             >
               <AiFillLinkedin />
             </SocialIcon>
-          </HStack>
-        </Flex>
-      </Flex>
+          </div>
+        </div>
+      </div>
       <div
         className="flex flex-col items-center w-full mb-20 gap-10"
         id="about"
@@ -245,7 +165,7 @@ const Home: NextPage = () => {
 
           <div className="flex flex-col flex-1  items-center md:items-start justify-center">
             <motion.p
-              className="text-base md:text-lg lg:text-xl text-center md:text-justify"
+              className="text-base md:text-lg lg:text-xl text-center md:text-justify text-textDark dark:text-textLight"
               variants={slideRight}
               initial="start"
               whileInView="end"
@@ -280,7 +200,7 @@ const Home: NextPage = () => {
               whileInView="end"
             />
             <motion.p
-              className="text-center md:text-left"
+              className="text-center md:text-left text-textDark dark:text-textLight"
               variants={visibility}
               initial="start"
               whileInView="end"
@@ -295,27 +215,27 @@ const Home: NextPage = () => {
               whileInView="end"
             >
               <motion.div variants={slideLeft} className="flex items-center">
-                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
-                <motion.p className="font-semibold text-sm md:text-base">
+                <FaChevronRight className="text-blueLight-500 dark:text-blueDark-200" />
+                <motion.p className="font-semibold text-sm md:text-base text-textDark dark:text-textLight">
                   Next.js
                 </motion.p>
               </motion.div>
               <motion.div variants={slideLeft} className="flex items-center">
-                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
-                <motion.p className="font-semibold text-sm md:text-base">
+                <FaChevronRight className="text-blueLight-500 dark:text-blueDark-200" />
+                <motion.p className="font-semibold text-sm md:text-base text-textDark dark:text-textLight">
                   TypeScript
                 </motion.p>
               </motion.div>
               <motion.div variants={slideLeft} className="flex items-center">
-                <FaChevronRight className="text-blueLight-500 dark:text-bluedark-200" />
-                <motion.p className="font-semibold text-sm md:text-base">
+                <FaChevronRight className="text-blueLight-500 dark:text-blueDark-200" />
+                <motion.p className="font-semibold text-sm md:text-base text-textDark dark:text-textLight">
                   Prisma & MongoDB
                 </motion.p>
               </motion.div>
             </motion.div>
             <Link href="/skills" className="mt-5" passHref>
               <motion.button
-                className="flex py-2 px-4 items-center gap-2  transition-colors ease-in duration-200 bg-blueLight-500 hover:bg-blueLight-600  text-textLight dark:text-textDark dark:hover:bg-blueDark-300 rounded-md dark:bg-blueDark-200"
+                className="flex py-2 px-4 items-center gap-2 font-semibold transition-colors ease-in duration-200 bg-blueLight-500 hover:bg-blueLight-600  text-textLight dark:text-textDark dark:hover:bg-blueDark-300 rounded-md dark:bg-blueDark-200"
                 variants={rise}
                 initial="start"
                 whileInView="end"
@@ -327,7 +247,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-    </Box>
+    </div>
   );
 };
 
