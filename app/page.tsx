@@ -74,7 +74,11 @@ const Home = () => {
                   Check My Work <FaChevronRight />
                 </motion.button>
               </Link>
-              <Link href="/CV_Maciej_Pieczarka.pdf" target="_blank">
+              <Link
+                href="/CV_Maciej_Pieczarka.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <motion.button
                   className="w-full flex items-center py-2 px-4 gap-2 font-semibold rounded-md outline outline-2 outline-blueLight-500 hover:bg-textDark hover:text-textLight hover:outline-none hover:dark:outline-none hover:dark:bg-textLight hover:dark:text-textDark dark:outline-blueDark-200 text-blueLight-500 dark:text-blueDark-200"
                   variants={riseDelay}
