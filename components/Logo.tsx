@@ -1,13 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useColorModeValue } from '@chakra-ui/react';
 
 const Logo = () => {
-  const Img = `/logo${useColorModeValue('-light', '-dark')}.svg`;
+  const lightModeLogo = `/logo-light.svg`;
+  const darkModeLogo = `/logo-dark.svg`;
 
   return (
     <Link href="/">
-      <Image src={Img} width={50} height={50} alt="Logo Image" />
+      <Image
+        priority
+        className="dark:hidden"
+        src={lightModeLogo}
+        width={50}
+        height={50}
+        alt="Logo Image"
+      />
+      <Image
+        priority
+        className="hidden dark:block"
+        src={darkModeLogo}
+        width={50}
+        height={50}
+        alt="Logo Image"
+      />
     </Link>
   );
 };

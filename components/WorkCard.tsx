@@ -1,15 +1,6 @@
-import {
-  Box,
-  GridItem,
-  Text,
-  Heading,
-  useColorModeValue,
-  Flex,
-} from '@chakra-ui/react';
-import { CustomImg } from '../pages/index';
-import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { rise } from '../lib/animationVariants';
+import Image from 'next/image';
 
 interface IWorkCardProps {
   img: string;
@@ -19,12 +10,6 @@ interface IWorkCardProps {
   description: string;
 }
 
-const WorkLink = styled(Text)`
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 1.4em;
-`;
-
 const WorkCard: React.FC<IWorkCardProps> = ({
   img,
   url,
@@ -33,58 +18,29 @@ const WorkCard: React.FC<IWorkCardProps> = ({
   description,
 }) => {
   return (
-    <GridItem
-      as={motion.div}
-      variants={rise}
-      textAlign="center"
-      width="100%"
-      height="100%"
-      position="relative"
-    >
-      <Box
-        width={340}
-        height={190}
-        position="relative"
-        borderRadius={20}
-        overflow="hidden"
-        mx="auto"
-        shadow="md"
-      >
-        <CustomImg src={img} layout="fill" alt={`${title} preview image`} />
-        <Flex
-          position="absolute"
-          top="0"
-          left="0"
-          bottom="0"
-          right="0"
-          direction="column"
-          align="center"
-          justify="center"
-          gap={10}
-          opacity={0}
-          transition="opacity 300ms ease"
-          bg={useColorModeValue('textDark', 'textLight')}
-          _hover={{ opacity: 0.9 }}
-        >
-          <a href={url} target="_blank" rel="noreferrer">
-            <WorkLink color={useColorModeValue('textLight', 'textDark')}>
+    <motion.div className="text-center w-full h-full relative" variants={rise}>
+      <div className="aspect-video relative rounded-3xl overflow-hidden mx-auto shadow-md">
+        <Image src={img} fill alt={`${title} preview image`} />
+        <div className="flex absolute inset-0 flex-col items-center justify-center gap-10 opacity-0 transition-opacity duration-300 ease-in hover:opacity-90 bg-textDark dark:bg-textLight">
+          <a href={url} target="_blank" rel="noreferrer noopener">
+            <p className="cursor-pointer underline text-xl text-textLight dark:text-textDark">
               Live Preview
-            </WorkLink>
+            </p>
           </a>
           <a href={codeUrl} target="_blank" rel="noreferrer">
-            <WorkLink color={useColorModeValue('textLight', 'textDark')}>
+            <p className="cursor-pointer underline text-xl text-textLight dark:text-textDark">
               Code
-            </WorkLink>
+            </p>
           </a>
-        </Flex>
-      </Box>
+        </div>
+      </div>
 
-      <Heading as="h3" fontSize={20} my={2}>
+      <h3 className="mt-3 text-2xl font-semibold text-textDark dark:text-textLight">
         {title}
-      </Heading>
+      </h3>
 
-      <Text>{description}</Text>
-    </GridItem>
+      <p className="text-textDark dark:text-textLight">{description}</p>
+    </motion.div>
   );
 };
 
