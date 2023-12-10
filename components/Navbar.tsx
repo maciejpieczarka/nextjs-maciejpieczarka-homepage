@@ -36,8 +36,8 @@ const LinkItem: React.FC<ILinkItemProps> = ({
         >
           <div
             className={`px-2 py-2  ${
-              active && 'bg-gray-100'
-            } hover:bg-gray-100`}
+              active && 'bg-gray-100 dark:bg-zinc-900'
+            } hover:bg-gray-100 hover:dark:bg-zinc-900 text-textDark dark:text-textLight`}
           >
             {children}
           </div>
@@ -47,7 +47,7 @@ const LinkItem: React.FC<ILinkItemProps> = ({
           href={href}
           className={`${
             active ? 'underline font-semibold' : 'no-underline font-light'
-          } font-nunito`}
+          } font-nunito text-textDark dark:text-textLight`}
         >
           {children}
         </Link>
@@ -93,14 +93,14 @@ const Navbar: React.FC = () => {
             <ThemeToggleButton />
             <div className="md:hidden relative">
               <button
-                className=" w-10 h-10 rounded-md flex items-center justify-center bg-gray-100"
+                className=" w-10 h-10 rounded-md flex items-center justify-center bg-textDark dark:bg-textLight"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Menu-button"
               >
                 {isOpen ? (
-                  <IoClose className="text-textDark text-2xl" />
+                  <IoClose className="text-textLight dark:text-textDark text-2xl" />
                 ) : (
-                  <IoMenu className="text-textDark text-2xl" />
+                  <IoMenu className="text-textLight dark:text-textDark text-2xl" />
                 )}
               </button>
 
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   ref={mobileNavRef}
-                  className="absolute flex flex-col w-56 bg-white mt-2 right-0 py-2 rounded-md border-gray-300 border"
+                  className="absolute flex flex-col w-56 bg-textLight dark:bg-textDark mt-2 right-0 py-2 rounded-md border-gray-300 border"
                 >
                   <LinkItem mobile href="/" path={pathname}>
                     Home
