@@ -1,27 +1,39 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { TiWeatherSunny } from 'react-icons/ti';
+import { IoMdMoon } from 'react-icons/io';
+import { useTheme } from 'next-themes';
 
 const ThemeToggleButton = () => {
-  const { toggleColorMode } = useColorMode();
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        style={{ display: 'inline-block' }}
-        key={useColorModeValue('light', 'dark')}
-        initial={{ scale: 0.4, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.4, rotate: '90deg', opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        <IconButton
-          aria-label="Change theme btn"
-          colorScheme={useColorModeValue('purple', 'orange')}
-          icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
-          onClick={toggleColorMode}
-        />
-      </motion.div>
+      {currentTheme === 'dark' ? (
+        <motion.button
+          className="w-10 h-10 rounded-md bg-orange-300 flex items-center justify-center text-textDark text-xl"
+          key="theme-toggler"
+          initial={{ scale: 0.4, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.4, rotate: '90deg', opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+        >
+          <TiWeatherSunny />
+        </motion.button>
+      ) : (
+        <motion.button
+          className="w-10 h-10 rounded-md bg-violet-600 flex items-center justify-center text-textLight text-xl"
+          key="theme-toggler2"
+          initial={{ scale: 0.4, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.4, rotate: '90deg', opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+        >
+          <IoMdMoon />
+        </motion.button>
+      )}
     </AnimatePresence>
   );
 };
