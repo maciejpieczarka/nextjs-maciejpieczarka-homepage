@@ -25,7 +25,10 @@ const CardFace: React.FC<ICardFaceProps> = ({ icon, title }) => {
           alt={`${title} card image`}
         />
       </motion.div>
-      <motion.h3 className="text-4xl font-bold" layoutId={`${title}-title`}>
+      <motion.h3
+        className="text-4xl font-bold text-textDark dark:text-textLight"
+        layoutId={`${title}-title`}
+      >
         {title}
       </motion.h3>
     </div>

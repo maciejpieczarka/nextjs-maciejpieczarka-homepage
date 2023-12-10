@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-[#F1E3D7] dark:bg-[#202023]">
         <Providers>
           <Fonts />
           <Navbar />

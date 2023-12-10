@@ -42,7 +42,7 @@ const SkillCard: React.FC<ISkillCardProps> = ({ icon, title, listContent }) => {
               >
                 {listContent.map(({ skillName, skillDesc }) => (
                   <motion.li
-                    className="list-disc"
+                    className="list-disc text-textDark dark:text-textLight"
                     key={skillName}
                     variants={slideRight}
                   >

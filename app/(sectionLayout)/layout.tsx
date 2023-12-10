@@ -7,7 +7,7 @@ const Sectionlayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div
-      className="flex flex-col items-center w-full py-20 gap-10"
+      className="flex flex-col items-center w-full py-20 gap-10 text-textDark dark:text-textLight"
       id={heading ? heading : undefined}
     >
       <Link href={`/${heading}`}>

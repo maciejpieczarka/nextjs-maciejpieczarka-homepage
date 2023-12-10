@@ -17,7 +17,7 @@ const SocialIcon = ({ children, ariaValue, link }: ISocialIconProps) => {
       className="transition-transform duration-300 ease-in-out hover:rotate-12 "
     >
       <motion.button
-        className="bg-transparent hover:text-blueLight-500 dark:hover:text-blueDark-200 text-2xl md:text-4xl"
+        className="bg-transparent hover:text-blueLight-500 dark:hover:text-blueDark-200 text-2xl md:text-4xl text-textDark dark:text-textLight"
         variants={scale}
         initial="start"
         whileInView="end"

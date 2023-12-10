@@ -21,7 +21,7 @@ const WorkCard: React.FC<IWorkCardProps> = ({
     <motion.div className="text-center w-full h-full relative" variants={rise}>
       <div className="aspect-video relative rounded-3xl overflow-hidden mx-auto shadow-md">
         <CustomImg src={img} layout="fill" alt={`${title} preview image`} />
-        <div className="flex absolute inset-0 flex-col items-center justify-center gap-10 opacity-0 transition-opacity duration-300 ease-in hover:opacity-90 bg-textDark dark:text-textLight">
+        <div className="flex absolute inset-0 flex-col items-center justify-center gap-10 opacity-0 transition-opacity duration-300 ease-in hover:opacity-90 bg-textDark dark:bg-textLight">
           <a href={url} target="_blank" rel="noreferrer noopener">
             <p className="cursor-pointer underline text-xl text-textLight dark:text-textDark">
               Live Preview
@@ -35,9 +35,11 @@ const WorkCard: React.FC<IWorkCardProps> = ({
         </div>
       </div>
 
-      <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
+      <h3 className="mt-3 text-2xl font-semibold text-textDark dark:text-textLight">
+        {title}
+      </h3>
 
-      <p>{description}</p>
+      <p className="text-textDark dark:text-textLight">{description}</p>
     </motion.div>
   );
 };
