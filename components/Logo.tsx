@@ -8,6 +8,7 @@ const Logo = () => {
   return (
     <Link href="/">
       <Image
+        priority
         className="dark:hidden"
         src={lightModeLogo}
         width={50}
@@ -15,6 +16,7 @@ const Logo = () => {
         alt="Logo Image"
       />
       <Image
+        priority
         className="hidden dark:block"
         src={darkModeLogo}
         width={50}

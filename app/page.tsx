@@ -93,7 +93,7 @@ const Home = () => {
             initial="start"
             whileInView="end"
           >
-            <Image src="/HeroImg.jpg" alt="Profile Picture" fill />
+            <Image src="/HeroImg.jpg" alt="Profile Picture" fill priority />
           </motion.div>
         </div>
 
