@@ -1,10 +1,18 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { IoClose, IoMenu } from 'react-icons/io5';
+import { ImSpinner10 } from 'react-icons/im';
 
 // Components
-import ThemeToggleButton from './ThemeToggleBtn';
+const ThemeToggleButton = dynamic(() => import('./ThemeToggleBtn'), {
+  loading: () => (
+    <div className="flex items-center justify-center w-10 h-10">
+      <ImSpinner10 className="animate-spin text-center" />
+    </div>
+  ),
+});
 import Link from 'next/link';
 import Logo from './Logo';
 
@@ -91,6 +99,7 @@ const Navbar: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <ThemeToggleButton />
+
             <div className="md:hidden relative">
               <button
                 className=" w-10 h-10 rounded-md flex items-center justify-center bg-textDark dark:bg-textLight"
