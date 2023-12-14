@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   keywords:
     'portfolio, portfolio website, developer, maciej pieczarka, web development, nextjs, chakraui, tailwindcss, sanity, fullstack, frontend',
-  title: 'Maciej Pieczarka - portfolio website',
+  title: 'Portfolio | Maciej Pieczarka',
   icons: {
     icon: '/icon.ico',
   },
