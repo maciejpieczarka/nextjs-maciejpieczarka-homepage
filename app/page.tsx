@@ -26,7 +26,7 @@ import SocialIcon from '../components/SocialIcon';
 const Home = () => {
   return (
     <div>
-      <div className="flex flex-col justify-center items-center h-screen gap-10 md:gap-24">
+      <div className="flex flex-col justify-center items-center h-[calc(100vh-4rem)] gap-10 md:gap-24 ">
         <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-0 items-center justify-center md:justify-between w-full">
           <div className="text-center md:text-left">
             <div className="mb-5">
@@ -137,7 +137,7 @@ const Home = () => {
         </div>
       </div>
       <div
-        className="flex flex-col items-center w-full mb-20 gap-10"
+        className="flex flex-col justify-center items-center w-full gap-10 h-[calc(100vh-4rem)]"
         id="about"
       >
         <Link href="/#about">
@@ -167,7 +167,7 @@ const Home = () => {
             />
           </motion.div>
 
-          <div className="flex flex-col flex-1  items-center md:items-start justify-center">
+          <div className="flex flex-col flex-1  items-center md:items-start justify-center overflow-hidden">
             <motion.p
               className="text-base md:text-lg lg:text-xl text-center md:text-justify text-textDark dark:text-textLight"
               variants={slideRight}

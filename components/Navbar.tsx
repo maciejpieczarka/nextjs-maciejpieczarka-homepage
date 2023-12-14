@@ -81,8 +81,8 @@ const Navbar: React.FC = () => {
   }, [clickedOutside]);
 
   return (
-    <nav className="w-full bg-[#F4E9DF] dark:bg-[#27272B] sticky top-0 backdrop-blur-sm z-10 py-1">
-      <div className="px-2 md:px-0 max-w-7xl mx-auto ">
+    <nav className="w-full h-16 bg-[#F4E9DF] dark:bg-[#27272B] sticky flex items-center justify-center top-0 inset-x-0 backdrop-blur-sm z-10 py-1">
+      <div className="px-2 md:px-0 max-w-7xl w-full">
         <div className="flex justify-between items-center">
           <Logo />
           <div className="hidden md:flex justify-center items-center gap-2 w-full  text-textDark dark:text-textLight ">
